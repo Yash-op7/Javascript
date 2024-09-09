@@ -372,3 +372,64 @@ map.forEach((value, key) => {
 - Performance:
     - Object: Can be slower for frequent additions and deletions.
     - Map: Generally faster for frequent additions and deletions and provides better performance for large collections of data.
+
+⭐️ For Multiset just use Map as a counter
+⭐️ Heaps don't exist, :) wtf
+
+
+# `this` keyword:
+- `this` refers to the current execution context
+
+```js
+const obj = {
+  name: 'Alice',
+  greet() {
+    console.log(this.name);  // `this` refers to obj
+  }
+};
+obj.greet();  // Output: Alice
+```
+- In Functions: this refers to the global object (window in browsers).
+In Arrow Functions:
+
+- Arrow functions don’t have their own `this`; they inherit it from the surrounding scope (lexical `this`).
+
+⭐️ In strict mode, this in a standalone function is undefined.
+
+# `try...catch...finally` Syntax
+```js
+try {
+  // Code that might throw an error
+} catch (error) {
+  // Handle the error
+} finally {
+  // Code that always runs (optional)
+}
+
+try {
+  let result = riskyOperation();
+} catch (error) {
+  console.error('An error occurred:', error.message);
+} finally {
+  console.log('Cleanup code runs here');
+}
+```
+# Advanced Operators:
+## Nullish Coalescing (??)
+- Returns the right-hand operand if the left-hand operand is null or undefined.
+
+```js
+let x = null;
+let result = x ?? 'default';  // 'default'
+```
+
+## Optional Chaining (?.)
+- Safely access deeply nested properties. If a property is null or undefined, it returns undefined instead of throwing an error.
+
+Example:
+
+```js
+let obj = { user: { name: 'Alice' } };
+console.log(obj.user?.name);  // Alice
+console.log(obj.user?.address?.city);  // undefined, no error
+```
