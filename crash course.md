@@ -317,6 +317,8 @@ console.log(evens);  // [2, 4]
 const sum = [1, 2, 3].reduce((acc, num) => acc + num, 0);
 console.log(sum);  // 6
 ```
+Also `reduceRight()`: The reduceRight() method processes the array from right to left, accumulating a result. Could be useful in finding the minimum value from right or from left or something like that `¯\_(ツ)_/¯`
+
 
 ### 5. `find()`: Returns the first element that satisfies a condition.
 
