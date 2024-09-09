@@ -292,7 +292,7 @@ console.log(upperStr); // Output: HELLO
 let isTrue = true;
 let isFalse = false;
 ```
-# `Numeber`:
+# `Number`:
 
 
 # Useful methods:
@@ -302,6 +302,78 @@ let isFalse = false;
 [1, 2, 3].forEach(num => console.log(num));
 // Output: 1 2 3
 ```
+### 2. map():
+```js
+const doubled = [1, 2, 3].map(num => num * 2);
+console.log(doubled);  // [2, 4, 6]
+```
+### 3. ƒilter():
+```js
+const evens = [1, 2, 3, 4].filter(num => num % 2 === 0);
+console.log(evens);  // [2, 4]
+```
+### 4. reduce():
+```js
+const sum = [1, 2, 3].reduce((acc, num) => acc + num, 0);
+console.log(sum);  // 6
+```
+
+### 5. `find()`: Returns the first element that satisfies a condition.
+
+```js
+const result = [1, 2, 3].find(num => num > 1);
+console.log(result);  // 2
+```
+
+### 6. `findIndex()`:
+```js
+const index = [1, 2, 3].findIndex(num => num > 1);
+console.log(index);  // 1
+```
+### 7. `some()`:
+```js
+const hasEven = [1, 3, 5].some(num => num % 2 === 0);
+console.log(hasEven);  // false
+```
+### 8. `every()`:
+```js
+const allPositive = [1, 2, 3].every(num => num > 0);
+console.log(allPositive);  // true
+```
+### 9. `includes()`:
+```js
+const hasTwo = [1, 2, 3].includes(2);
+console.log(hasTwo);  // true
+```
+### 10. `concats()`: join two or more arrays
+```js
+const combined = [1, 2].concat([3, 4]);
+console.log(combined);  // [1, 2, 3, 4]
+```
+
+### 9. `slice()`:
+```js
+const part = [1, 2, 3, 4].slice(1, 3);
+console.log(part);  // [2, 3]
+```
+### 9. `splice()`:
+```js
+const arr = [1, 2, 3];
+arr.splice(1, 1);  // Removes one element at index 1
+console.log(arr);  // [1, 3]
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
