@@ -90,3 +90,20 @@ let obj = { key: 'val' };// Object
 ```
 # ⭐️ loose equality `==` versus strict equality `===`
 - Use === (strict equality): Avoids type coercion (e.g., 2 == "2" is true, but 2 === "2" is false).
+
+# conditional statements:
+- if else syntax is same
+- below is `switch`:
+```js
+switch (x) {
+  case 1:
+    console.log("One");
+    break;
+  case 2:
+    console.log("Two");
+    break;
+  default:
+    console.log("Other");
+}
+```
+⭐️ Note: Always include break to avoid fall-through behavior in switch statements.

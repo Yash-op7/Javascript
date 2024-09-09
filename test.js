@@ -1,4 +1,9 @@
+let x = 5;
 
-x = 5;
-let x;
-console.log('test', x);
+if (x > 2) {
+    console.log('x > 2');
+} else if (x == 2) {
+    console.log('x == 2');
+} else {
+    console.log('x < 2')
+}   
