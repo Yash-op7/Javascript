@@ -131,3 +131,18 @@ function greet(name = "World") {
   return `Hello, ${name}`;
 }
 ```
+
+
+# ⭐️ Objects / Dicts:
+```js
+let person = {
+    name: "John",
+    age: 30,
+    greet: function() {
+      console.log(`Hello, I'm ${this.gender}`);
+    },
+    gender: 'M'
+  };
+  
+person.greet();
+  ```
