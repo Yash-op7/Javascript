@@ -354,3 +354,21 @@ map.forEach((value, key) => {
   console.log(`${key}: ${value}`);
 });
 ```
+
+# Map vs Object: Differences:
+
+- Key Types:
+    - Object: Keys are strings or Symbols.
+    - Map: Keys can be any type (including objects and functions).
+- Ordering:
+    - Object: Does not guarantee order.
+    - Map: Maintains insertion order.
+- Prototype:
+    - Object: Has a prototype chain.
+    - Map: Does not have a prototype chain.
+- Methods:
+    - Object: Limited set of methods, not as flexible.
+    - Map: Richer set of methods for operations and iterations.
+- Performance:
+    - Object: Can be slower for frequent additions and deletions.
+    - Map: Generally faster for frequent additions and deletions and provides better performance for large collections of data.
