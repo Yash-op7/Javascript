@@ -351,16 +351,51 @@ const combined = [1, 2].concat([3, 4]);
 console.log(combined);  // [1, 2, 3, 4]
 ```
 
-### 9. `slice()`:
+### 11. `slice()`:
 ```js
 const part = [1, 2, 3, 4].slice(1, 3);
 console.log(part);  // [2, 3]
 ```
-### 9. `splice()`:
+### 12. `splice()`:
 ```js
 const arr = [1, 2, 3];
 arr.splice(1, 1);  // Removes one element at index 1
 console.log(arr);  // [1, 3]
+```
+### 13. `sort()`: sorts the array *inplace* ⭐️
+- Comparison Function: The function provided to sort() should return a negative number if the first argument should come before the second, a positive number if the second should come before the first, and 0 if they are equal.
+- In-Place Sorting: The sort() method sorts the array in place and returns the sorted array.
+- Stability: JavaScript’s Array.prototype.sort() is stable in modern engines, meaning it maintains the relative order of elements with equal sort keys.
+
+```js
+const arr = [1, 2, 3];
+arr.splice(1, 1);  // Removes one element at index 1
+console.log(arr);  // [1, 3]
+```
+### ⭐️ Custom sort:
+```js
+let listOfTuples = [
+  [1, 2, 9, -2],
+  [3, 4, 3]
+];
+
+// Function to calculate the average of a tuple
+function calculateAverage(tuple) {
+  const sum = tuple.reduce((acc, value) => acc + value, 0);
+  return sum / tuple.length;
+}
+
+// Custom sort function to sort based on average value
+listOfTuples.sort((a, b) => {
+  const avgA = calculateAverage(a);
+  const avgB = calculateAverage(b);
+
+  // Return a negative number if a should come before b, positive if b should come before a, 0 if they are equal
+  return avgA - avgB;
+});
+
+console.log(listOfTuples);
+// Output: [ [3, 4, 3], [1, 2, 9] ]
 ```
 
 
