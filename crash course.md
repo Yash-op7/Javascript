@@ -351,12 +351,17 @@ const combined = [1, 2].concat([3, 4]);
 console.log(combined);  // [1, 2, 3, 4]
 ```
 
-### 11. `slice()`:
+### 11. `slice()`: Returns a shallow copy of a portion of the array (non-destructive).
+- In JS, the terms destructive and non-destructive are used to describe whether a method or operation modifies the original data structure (like an array) or not.
+- Destructive (Mutating) Methods and Non-Destructive (Non-Mutating) Methods
+- Destructive methods modify the original array directly.
+- Non-destructive methods do not alter the original array but instead return a new array or value.
 ```js
 const part = [1, 2, 3, 4].slice(1, 3);
 console.log(part);  // [2, 3]
 ```
-### 12. `splice()`:
+### 12. `splice()`: Adds/removes elements from an array (destructive).
+
 ```js
 const arr = [1, 2, 3];
 arr.splice(1, 1);  // Removes one element at index 1
@@ -396,6 +401,13 @@ listOfTuples.sort((a, b) => {
 
 console.log(listOfTuples);
 // Output: [ [3, 4, 3], [1, 2, 9] ]
+```
+
+### 14. `reverse()`: reverses the array in place.
+```js
+const arr = [1, 2, 3];
+arr.reverse();
+console.log(arr);  // [3, 2, 1]
 ```
 
 
