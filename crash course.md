@@ -296,6 +296,15 @@ let isFalse = false;
 
 
 # Useful methods:
+## Array Methods:
+### 1. `forEach()`
+```js
+[1, 2, 3].forEach(num => console.log(num));
+// Output: 1 2 3
+```
+
+
+
 ```js
 // stoi
 let parsed = Number('43.21');
@@ -440,3 +449,7 @@ console.log(obj.user?.address?.city);  // undefined, no error
 let isLoggedIn = true;
 let greeting = isLoggedIn ? 'Welcome back!' : 'Please log in';
 ```
+
+⭐️ null and undefined
+- `null`: Explicit absence of value.
+- `undefined`: Variable declared but not assigned.

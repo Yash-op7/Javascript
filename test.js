@@ -1,7 +1,7 @@
 "use strict";
 
+[1, 2, 3].forEach(num => console.log(num));
+// Output: 1 2 3
 
-
-let obj = { user: { name: 'Alice' } };
-console.log(obj.user?.name);  // Alice
-console.log(obj.user?.address?.city);  // undefined, no error
+const doubled = [1, 2, 3].map(num => num * 2);
+console.log(doubled);  // [2, 4, 6]
