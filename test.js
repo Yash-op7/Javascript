@@ -1,6 +1,7 @@
 "use strict";
 
-const map = new Map();
-map.set('name', 'Alice');
-map.set(1, 'one');  // Keys can be numbers
-console.log(map.get('name'));  // Alice
+
+
+let obj = { user: { name: 'Alice' } };
+console.log(obj.user?.name);  // Alice
+console.log(obj.user?.address?.city);  // undefined, no error

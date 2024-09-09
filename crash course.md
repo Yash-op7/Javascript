@@ -242,7 +242,7 @@ console.log(typeof x); // "undefined"
 
 # Data types:
 ## Number
-- very large range upto -1e308 to 1e308
+- very large range
 - used for both int and float values
 - with float has precision upto 15-17 decimals.
 - `Infinity` &  `-Infinity`:
@@ -263,6 +263,7 @@ console.log(Number.isNaN(result)); // Output: true
 ```
 ## BigInt:
 - for numbers outside Number range
+- For integers larger than Number.MAX_SAFE_INTEGER (2^53 - 1), use BigInt.
 - initialization: use n at the end:
 ```js
 let bigInt = 123456789012345678901234567890n;
@@ -432,4 +433,10 @@ Example:
 let obj = { user: { name: 'Alice' } };
 console.log(obj.user?.name);  // Alice
 console.log(obj.user?.address?.city);  // undefined, no error
+```
+
+## Ternary Operator (?:)
+```js
+let isLoggedIn = true;
+let greeting = isLoggedIn ? 'Welcome back!' : 'Please log in';
 ```
