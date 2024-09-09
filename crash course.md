@@ -320,7 +320,7 @@ obj.name = "Bob";  // Object is mutable, properties can be changed
 ```
 
 # Data Structures:
-## Sets:
+## `Set`:
 ```js
 const set = new Set([1, 2, 3]);
 set.add(3);  // No effect, duplicates not allowed
@@ -332,3 +332,25 @@ console.log(set.has(1));  // true
 - `has(value)`: Checks if a value exists.
 -`size`: Returns the number of elements.
 - `clear()`: Removes all elements.
+
+## `Map`:
+```js
+const map = new Map();
+map.set('name', 'Alice');
+map.set(1, 'one');  // Keys can be numbers
+console.log(map.get('name'));  // Alice
+```
+
+- `set(key, value)`: Adds a key-value pair.
+- `get(key)`: Retrieves a value by key.
+- `has(key)`: Checks if a key exists.
+- `delete(key)`: Removes a key-value pair.
+- `size`: Returns the number of elements.
+- `.keys()`, `.values()`, `.entries()` - for iterations.
+- `.clear()`
+- `.forEach((value, key) => {...})`:
+```js
+map.forEach((value, key) => {
+  console.log(`${key}: ${value}`);
+});
+```
