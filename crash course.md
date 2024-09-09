@@ -809,3 +809,22 @@ const result = arr.flatMap(num => [num, num * num]);
 console.log(result); // Output: [1, 1, 2, 4, 3, 9]
 ```
 - Explanation: `flatMap(callbackFn)` applies `callbackFn` to each element and flattens the result by one level.
+
+
+# Building Foundations: Asynchronous JS
+## JS's single-threaded nature
+
+- A thread is a single sequence of execution in a program.
+- JS is single threaded meaning it can only execute one piece of code at a time unlike c++ or python which can be multithreaded, this might give the indication that JS is less capable but JS handles concurrency in a very unique way, using non-blocking asynchronous mechanisms.
+- Synchronous vs Asynchronous ops:
+  - sync ops are those where tasks are executed one after another in a sequence, and each task waits for the previous one's execution to complete.
+  - In c++, python or java calling a function blocks the program untill the function returns, but in js certain tasks are allowed to happen in the background instead of waiting for them to finish js can start other tasks in the meantime.
+  example:
+  ```js
+  console.log('start');
+  setTimeout(() => {console.log('finished async task')}, 1000);
+  console.log('end')
+  ```
+- ## `Key Takeaway:` JavaScript is single-threaded, but it can handle asynchronous operations efficiently by delegating tasks and using its event loop.
+
+# 2. Event Loop and Call Stack
