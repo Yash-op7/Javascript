@@ -173,3 +173,54 @@ let name = "John";
 let greeting = `Hello, ${name}!`;
 ```
 
+# Strict mode:
+- jUse "use strict"; at the top of your JS file or function to enforce stricter parsing rules.
+```js
+"use strict";
+x = 10;  // Throws an error because x is not declared
+```
+
+# Arrow Functions Have No this Context
+In JavaScript, the `this` keyword refers to the current execution context (i.e., the object to which the function belongs). However, in traditional functions, the value of this can be tricky, especially in callbacks and asynchronous code because this can change based on how the function is called.
+
+Arrow functions, on the other hand, do not have their own this context. Instead, they inherit this from the surrounding scope (i.e., the scope in which the arrow function is defined). This behavior is called lexical scoping of this.
+
+Why Is This Useful?
+In traditional functions, this can behave unpredictably inside callbacks, and we often need to use hacks like .bind(this) to ensure this refers to the correct object. But with arrow functions, since this is lexically bound, it always refers to the outer scope's this, making it easier to work with asynchronous code or callbacks.
+
+See the below example,
+without arrow functions we need to bind the surrounding context to current context:
+```js
+function Person(name) {
+  this.name = name;
+
+  setTimeout(function() {
+    console.log(this.name);
+  }.bind(this), 1000);  // Manually binding `this` to the outer context
+}
+
+const person = new Person('Alice');
+// Output: Alice
+```
+But with arrow functions its much simpler:
+```js
+function Person(name) {
+  this.name = name;
+
+  setTimeout(() => {
+    console.log(this.name);  // Arrow function doesn't create its own `this`, it uses the outer `this`.
+  }, 1000);
+}
+
+const person = new Person('Alice');
+// Output: Alice
+```
+Summary: `this` is lexical and refers to the context in which the arrow function was defined. This is especially useful in callbacks and asynchronous code where you want to maintain the value of this from the outer scope.
+
+# `null` keyword:
+- **Definition**: `null` is a special value in JavaScript that represents the intentional absence of any object value. It is a primitive value and is often used to indicate that a variable has been explicitly set to have no value.
+- **Type**: When you check the type of `null` using `typeof`, it will return "object". This is considered a quirk of JavaScript.
+```javascript
+console.log(typeof null); // "object"
+```
+- **Usage**: It is commonly used to indicate that a variable should be empty or not point to any object.
