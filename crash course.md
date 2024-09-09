@@ -43,7 +43,7 @@ for (let key in person) {
 }
 ```
 
-### `for in`: to loop iterable objects like arrays, strings, maps,
+### `for of`: to loop iterable objects like arrays, strings, maps,
 ```js
 for (let value of iterable) {
   // Code to execute for each value
@@ -107,3 +107,27 @@ switch (x) {
 }
 ```
 ⭐️ Note: Always include break to avoid fall-through behavior in switch statements.
+
+# Functions:
+## Function Declaration
+```js
+function greet(name) {
+  return `Hello, ${name}`;
+}
+```
+## Function Expressions (Anonymous Functions)
+```js
+const add = function(a, b) {
+  return a + b;
+};
+```
+## Arrow Functions (ES6+)
+```js
+const multiply = (a, b) => a * b;  // Concise syntax
+```
+## default params:
+```js
+function greet(name = "World") {
+  return `Hello, ${name}`;
+}
+```
