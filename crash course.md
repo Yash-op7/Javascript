@@ -361,7 +361,15 @@ const part = [1, 2, 3, 4].slice(1, 3);
 console.log(part);  // [2, 3]
 ```
 ### 12. `splice()`: Adds/removes elements from an array (destructive).
+`splice(startIndex, deleteCount, item1, item2, ...)`
+```js
+const arr = [1, 2, 4, 5];
 
+// Add elements 3 and 6 at index 2
+arr.splice(2, 0, 3, 6);
+
+console.log(arr); // Output: [1, 2, 3, 6, 4, 5]
+```
 ```js
 const arr = [1, 2, 3];
 arr.splice(1, 1);  // Removes one element at index 1
@@ -757,5 +765,45 @@ const { name, age } = { name: 'Alice', age: 25 };
 const nums = [1, 2, 3];
 const newNums = [...nums, 4, 5];  // [1, 2, 3, 4, 5]
 
-const sum = (...args) => args.reduce((acc, val) => acc + val, 0);
+⭐️ const sum = (...args) => args.reduce((acc, val) => acc + val, 0);
 ```
+## Cool Tricks:
+```js
+-> IIFE (Immediately Invoked Function Expression):
+
+(function() {
+  console.log('This runs immediately!');
+})();
+
+Why it's useful: IIFEs are often used to create local scopes and avoid polluting the global namespace.
+
+
+-> Short-circuit evaluation:
+
+const result = a || b;  // Returns `a` if it's truthy, otherwise returns `b`
+const valid = isUser && isAdmin;  // Returns `true` only if both conditions are true
+
+
+-> Default Parameters:
+You can set default parameter values in functions.
+
+function greet(name = 'Guest') {
+  console.log(`Hello, ${name}`);
+}
+greet();  // Hello, Guest
+```
+
+## `Array.prototype.flatMap()`
+- The flatMap() method maps each element using a mapping function and then flattens the result into a new array.
+
+Example:
+
+```javascript
+const arr = [1, 2, 3];
+
+// Map each number to an array of its number and its square, then flatten the result
+const result = arr.flatMap(num => [num, num * num]);
+
+console.log(result); // Output: [1, 1, 2, 4, 3, 9]
+```
+- Explanation: `flatMap(callbackFn)` applies `callbackFn` to each element and flattens the result by one level.
