@@ -224,3 +224,111 @@ Summary: `this` is lexical and refers to the context in which the arrow function
 console.log(typeof null); // "object"
 ```
 - **Usage**: It is commonly used to indicate that a variable should be empty or not point to any object.
+
+# `undefined` keyword:
+- **Definition**: undefined is a primitive value automatically assigned to variables that have been declared but not initialized. It also signifies that a property does not exist on an object.
+- **Type**: When you check the type of undefined, it will return "undefined".
+```javascript
+let x;
+console.log(typeof x); // "undefined"
+```
+- **Usage**: It is used by JavaScript to denote that a variable or property has not been assigned a value or does not exist.
+
+# Sumamry: Difference between null and undefined:
+
+- Intent: null is explicitly assigned to a variable to indicate that it has no value, while undefined is automatically assigned by JavaScript when a variable is declared but not initialized.
+- Type: null has a type of "object", whereas undefined has a type of "undefined".
+- Use Cases: You typically use null to represent the absence of a value where you expect a value, and undefined to represent uninitialized variables or non-existent properties.
+
+# Data types:
+## Number
+- very large range upto -1e308 to 1e308
+- used for both int and float values
+- with float has precision upto 15-17 decimals.
+- `Infinity` &  `-Infinity`:
+```js
+let posInf = Infinity;
+let negInf = -Infinity;
+```
+- `NaN`:
+```js
+let parsed = Number('abc');
+console.log(parsed); // Output: NaN
+
+let result = 0 / 0;
+console.log(result); // Output: NaN
+
+// Checking for NaN
+console.log(Number.isNaN(result)); // Output: true
+```
+## BigInt:
+- for numbers outside Number range
+- initialization: use n at the end:
+```js
+let bigInt = 123456789012345678901234567890n;
+console.log(bigInt); // 123456789012345678901234567890n
+```
+
+# `String`:
+- Immutable
+- use '' or "" or `` to initialize
+```js
+let str1 = 'Hello';
+let str2 = "World";
+let str3 = `Hello, ${str2}`;
+console.log(str3); // Output: Hello, World
+
+let length = str1.length; // Length of the string
+console.log(length); // Output: 5
+
+let upperStr = str1.toUpperCase(); // Convert to uppercase
+console.log(upperStr); // Output: HELLO
+```
+
+# `Boolean`:
+- Falsy Values: 0, -0, NaN, null, undefined, '' (empty string), and false are considered falsy.
+```js
+let isTrue = true;
+let isFalse = false;
+```
+# `Numeber`:
+
+
+# Useful methods:
+```js
+// stoi
+let parsed = Number('43.21');
+
+// to_string
+let x = 2.35
+print(typeof x.toString())
+```
+
+# Mutability
+- Primitive Data Types (e.g., Number, String, Boolean, null, undefined, Symbol, BigInt) are immutable. This means their values cannot be changed after assignment.
+
+```js
+let a = "hello";
+a[0] = "H";  // No effect, strings are immutable
+a = "Hello";  // Reassigns the entire variable, creates a new string
+```
+- Objects and Arrays are mutable. This means their internal state (properties or elements) can be changed even if they are declared with const.
+
+```js
+const obj = { name: "Alice" };
+obj.name = "Bob";  // Object is mutable, properties can be changed
+```
+
+# Data Structures:
+## Sets:
+```js
+const set = new Set([1, 2, 3]);
+set.add(3);  // No effect, duplicates not allowed
+set.delete(2);
+console.log(set.has(1));  // true
+```
+- `add(value)`: Adds a value to the set.
+- `delete(value)`: Removes a value.
+- `has(value)`: Checks if a value exists.
+-`size`: Returns the number of elements.
+- `clear()`: Removes all elements.
