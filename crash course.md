@@ -422,3 +422,14 @@ try {
 let x = null;
 let result = x ?? 'default';  // 'default'
 ```
+
+## Optional Chaining (?.)
+- Safely access deeply nested properties. If a property is null or undefined, it returns undefined instead of throwing an error.
+
+Example:
+
+```js
+let obj = { user: { name: 'Alice' } };
+console.log(obj.user?.name);  // Alice
+console.log(obj.user?.address?.city);  // undefined, no error
+```
