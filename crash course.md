@@ -827,4 +827,42 @@ console.log(result); // Output: [1, 1, 2, 4, 3, 9]
   ```
 - ## `Key Takeaway:` JavaScript is single-threaded, but it can handle asynchronous operations efficiently by delegating tasks and using its event loop.
 
-# 2. Event Loop and Call Stack
+## 2. Event Loop and Call Stack
+### Call Stack: 
+- The call stack is a data structure used to keep track of function calls in JavaScript. When you call a function, it gets pushed onto the stack. Once the function finishes, it gets popped off.
+
+- This is how synchronous code is executed in a single-threaded manner.
+### Event Loop:
+- The event loop is the mechanism that enables asynchronous code execution in JavaScript.
+- When an asynchronous operation (like a network request, timer, or file reading) is made, it is offloaded to the browser's **Web APIs or Node.js APIs**, which handle the operation. These are non-blocking and allow the main thread (call stack) to continue executing.
+- Once the asynchronous task is complete (e.g., a response from a server), the event loop checks if the call stack is empty. If it is, the task's callback function gets placed in the callback queue and executed.
+
+## Callbacks
+- A callback is a function passed as an argument to another function, to be executed later, usually when an asynchronous operation completes.
+- Callbacks were the original way to handle asynchronous tasks in JavaScript.
+```js
+function getData(callback) {
+  setTimeout(() => {
+    console.log('Fetching Data...');
+    callback('Data Received');
+  }, 1000);
+}
+
+getData((message) => {
+  console.log(message);  // Output: Data Received (after 1 second)
+});
+```
+### Why Use Callbacks?
+
+- Callbacks allow us to wait for asynchronous tasks without blocking the rest of the program.
+- However, callbacks can lead to callback hell, a scenario where nested callbacks make the code hard to read and maintain.
+
+## 4. Promises
+### What is a Promise?
+- A Promise is a modern and cleaner way to handle asynchronous operations. It represents a value that may be available <span style="color:cyan;">now</span>, in the <span style="color:cyan;">future</span>, or <span style="color:cyan;">never</span>.
+
+- Promises have three states:
+  - Pending: Initial state, neither fulfilled nor rejected.
+  - Fulfilled: Operation completed successfully.
+  - Rejected: Operation failed.
+
