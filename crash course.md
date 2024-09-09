@@ -482,7 +482,7 @@ const intervalId = setInterval(() => console.log('Tick'), 1000);
 -> parseInt() & parseFloat()
 // Converts a string to an integer or floating-point number.
 
-const num = parseInt('42');
+const num = parseInt('42'); 
 const floatNum = parseFloat('3.14');
 
 
@@ -668,3 +668,94 @@ let greeting = isLoggedIn ? 'Welcome back!' : 'Please log in';
 ⭐️ null and undefined
 - `null`: Explicit absence of value.
 - `undefined`: Variable declared but not assigned.
+
+
+# Other concepts:
+## Closures:
+A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope. This is a powerful concept often used in callbacks, asynchronous code, and function factories.
+```js
+function outer() {
+  let count = 0;
+  return function inner() {
+    count++;
+    console.log(count);
+  };
+}
+const increment = outer();
+increment();  // 1
+increment();  // 2
+```
+## Promises & Async/Await: 
+Promises and async/await are essential for working with asynchronous operations. You probably touched on this with the this context explanation, but it's good to be aware of how Promises and async/await manage asynchronous control flow.
+```js
+const fetchData = async () => {
+  try {
+    const response = await fetch('https://api.example.com/data');
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+## 3. Modules (ES6 Modules)
+ES6 modules allow you to split your code into multiple files and manage dependencies using import and export.
+
+```js
+-> Example of exporting:
+// utils.js
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+
+-> Example of importing:
+// main.js
+import { add, subtract } from './utils.js';
+console.log(add(5, 3));  // 8
+```
+
+## Prototype and Prototypal Inheritance
+JavaScript uses prototypal inheritance, meaning objects can inherit properties from other objects through the prototype chain.
+Prototype basics:
+
+```js
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayHello = function() {
+  console.log('Hello, ' + this.name);
+};
+
+const alice = new Person('Alice');
+alice.sayHello();  // Hello, Alice
+```
+Why it's useful: JavaScript doesn’t have classical inheritance like other languages (e.g., C++ or Java), so understanding prototypes is essential for mastering how inheritance works in JS.
+
+## Class Syntax:
+```js
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} makes a sound.`);
+  }
+}
+
+const dog = new Animal('Dog');
+dog.speak();  // Dog makes a sound.
+```
+## Destructuring and Rest/Spread Operators
+- Destructuring lets you easily extract values from arrays or objects.
+```js
+const [a, b] = [1, 2];
+const { name, age } = { name: 'Alice', age: 25 };
+```
+- Rest/Spread (...): Useful for merging arrays/objects or gathering function arguments.
+```js
+const nums = [1, 2, 3];
+const newNums = [...nums, 4, 5];  // [1, 2, 3, 4, 5]
+
+const sum = (...args) => args.reduce((acc, val) => acc + val, 0);
+```
