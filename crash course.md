@@ -410,10 +410,106 @@ arr.reverse();
 console.log(arr);  // [3, 2, 1]
 ```
 
+## `String` Methods:
+```js
+
+// split()
+// Splits a string into an array of substrings.
+const parts = 'a,b,c'.split(',');
+console.log(parts);  // ['a', 'b', 'c']
+
+// join()
+// Joins all array elements into a string.
+const str = ['a', 'b', 'c'].join('-');
+console.log(str);  // 'a-b-c'
+
+// toUpperCase()
+// Converts a string to uppercase.
+console.log('hello'.toUpperCase());  // 'HELLO'
+
+// toLowerCase()
+// Converts a string to lowercase.
+console.log('HELLO'.toLowerCase());  // 'hello'
+
+// trim()
+// Removes whitespace from both sides of a string.
+console.log('  hello  '.trim());  // 'hello'
+
+// replace()
+// Replaces occurrences of a substring.
+const str = 'Hello, World!'.replace('World', 'JS');
+console.log(str);  // 'Hello, JS!'
+
+// substring()
+// Returns a portion of the string.
+const str = 'abcdef';
+console.log(str.substring(1, 4));  // 'bcd'
+
+// charAt()
+// Returns the character at the specified index.
+console.log('hello'.charAt(1));  // 'e'
+
+// startsWith() & endsWith()
+// Checks if a string starts or ends with a specific substring.
+console.log('hello'.startsWith('he'));  // true
+console.log('hello'.endsWith('lo'));  // true
+```
+## `Object` Methods:
+```js
+
+// Object.freeze()
+// Freezes an object, preventing modifications.
+
+const obj = Object.freeze({ a: 1 });
+obj.a = 2;  // No effect, object is frozen
+```
+
+## Misc. Methods/Functions:
+```js
+-> setTimeout()
+// Executes a function after a specified delay.
+
+setTimeout(() => console.log('Hello'), 1000);  // Executes after 1 second
+
+
+-> setInterval()
+// Repeatedly calls a function at specified intervals.
+
+const intervalId = setInterval(() => console.log('Tick'), 1000);
+// To clear the interval: clearInterval(intervalId);
+
+
+-> parseInt() & parseFloat()
+// Converts a string to an integer or floating-point number.
+
+const num = parseInt('42');
+const floatNum = parseFloat('3.14');
+
+
+-> JSON.stringify() & JSON.parse() = Converts an object to JSON and vice versa.
+
+  const obj = { a: 1, b: 2 };
+  const json = JSON.stringify(obj);
+  const parsedObj = JSON.parse(json);
+
+-> Math.random() = Returns a random number between 0 and 1.
+
+  const rand = Math.random();  // e.g., 0.123456
+
+
+-> Math.floor(), Math.ceil(), Math.round() = Rounds numbers down, up, or to the nearest integer.
+
+  console.log(Math.floor(4.9));  // 4
+  console.log(Math.ceil(4.1));   // 5
+  console.log(Math.round(4.5));  //
+```
 
 
 
 
+
+
+```
 
 
 

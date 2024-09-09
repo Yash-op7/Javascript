@@ -1,7 +1,8 @@
 "use strict";
 
-[1, 2, 3].forEach(num => console.log(num));
-// Output: 1 2 3
 
-const doubled = [1, 2, 3].map(num => num * 2);
-console.log(doubled);  // [2, 4, 6]
+
+const intervalId = setInterval(() => console.log('Tick'), 1000);
+// To clear the interval: clearInterval(intervalId);
+
+setTimeout(() => clearInterval(intervalId), 4100);  // Executes after 1 second
