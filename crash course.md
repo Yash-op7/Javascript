@@ -302,17 +302,17 @@ let isFalse = false;
 [1, 2, 3].forEach(num => console.log(num));
 // Output: 1 2 3
 ```
-### 2. map():
+### 2. `map()`:
 ```js
 const doubled = [1, 2, 3].map(num => num * 2);
 console.log(doubled);  // [2, 4, 6]
 ```
-### 3. ƒilter():
+### 3. `ƒilter()`:
 ```js
 const evens = [1, 2, 3, 4].filter(num => num % 2 === 0);
 console.log(evens);  // [2, 4]
 ```
-### 4. reduce():
+### 4. `reduce()`:
 ```js
 const sum = [1, 2, 3].reduce((acc, num) => acc + num, 0);
 console.log(sum);  // 6
