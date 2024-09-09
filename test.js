@@ -1,10 +1,4 @@
-var x = 'global variable';
 
-function outer() {
-    function inner() {
-        console.log(x);
-    }
-    inner()
-}
-
-outer();
+x = 5;
+let x;
+console.log('test', x);

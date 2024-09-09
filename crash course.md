@@ -58,8 +58,35 @@ for (let value of array) {
 
 # `var`, `let` and `const`
 ## `var`
-- function-scoped: if its defined anywhere in the global space, then it is immediately hoisted and is available everywhere in the global scope
+- function-scoped: if its defined anywhere in the global space, then it is immediately hoisted and is available everywhere in the global scope, otherwise if its defined in a function then its only accessible within that function
 - hoisted, meaning you can use them before the declaration line, but they are initialized to `undefined`
 
 ## `let`
 - block scoped, not accessable outside the block
+- not hoisted
+
+## `var` v/s let or const, Basic difference:
+these are the two fundamentally basic differences:
+1. if you define a variable using let or const inside any if block, then it won't be available outside the block, but if you use var inside an if block, then it will be available everywhere inside the current function (by default we can consider the global scope as a main function of sorts)
+2. var is hoisted and initialized wth `undefined` and let/const are not hosited, they are not initialized and TDZ applies to them (Temporal Dead Zone, that is while they are hoisted they cannot be accessed or initialized before the declaration statement.) 
+
+Note:
+- avoid var, prefer let and const
+- const objects and arrays can still have their contents modified.
+
+# data types
+## primitve
+- Number, String, Boolean, null, undefined, Symbol, and BigInt.
+- no `char` type, use String
+## non-primitive:
+- Non-primitive types: Objects (arrays, functions, etc.).
+
+```js
+let num = 42;            // Number
+let str = "Hello";       // String
+let bool = true;         // Boolean
+let arr = [1, 2, 3];     // Array (an object)
+let obj = { key: 'val' };// Object
+```
+# ⭐️ loose equality `==` versus strict equality `===`
+- Use === (strict equality): Avoids type coercion (e.g., 2 == "2" is true, but 2 === "2" is false).
