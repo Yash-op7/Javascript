@@ -55,3 +55,11 @@ for (let value of array) {
   console.log(value);  // Outputs: 1, 2, 3, 4, 5
 }
 ```
+
+# `var`, `let` and `const`
+## `var`
+- function-scoped: if its defined anywhere in the global space, then it is immediately hoisted and is available everywhere in the global scope
+- hoisted, meaning you can use them before the declaration line, but they are initialized to `undefined`
+
+## `let`
+- block scoped, not accessable outside the block
