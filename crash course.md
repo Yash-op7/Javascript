@@ -987,8 +987,18 @@ Key Fact: Promises are asynchronous by nature, but they do not execute immediate
 
 ## Prototypes in JS
 - A js object is an entity having state and behavior (properties and methods).
+- every obj in js has an automatically created special inbuilt property.
+- ![alt text](image-1.png)
+- here Prototype is in itself an object with several properties
+- for example:
+![alt text](image-2.png)
+  - here we didnt define student.abc so its undefined, similarly we didn't define toString() method but its there, thats because its inherited from the Prototype object.
+- js objects have a by default special property called prototype which has some special properties and methods.
+### Practical implementation
 
 
+
+## more oops
 consider this example:
 ```js
 "use strict";
