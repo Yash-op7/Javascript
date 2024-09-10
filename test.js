@@ -1,5 +1,15 @@
 "use strict";
 
-let a = [1,2];
-a[5] = 3;
-console.log(a);
+const employee = {
+  calcTax() {
+    console.log('tax is 10%');
+  },
+};
+
+const arjun = {
+  salary: '50k'
+};
+
+// ⭐️ now if we want to access the properties and methods of the employee object in the arjun object then we can write employee as a prototype for arjun:
+arjun.__proto__ = employee;
+arjun.calcTax();
