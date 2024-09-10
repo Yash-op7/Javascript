@@ -1093,6 +1093,19 @@ lambo.isFast = true; // This will work
 console.log(lambo.topSpeed); // undefined
 ```
 
+## Inheritance
+- passing down properties and methods from parent class to child class
+- done using `extends` keyword
+```js
+class Parent {
+
+}
+class Child extends Parent {
+
+}
+```
+- method overriding is there
+
 
 
 ### Constructor Functions
