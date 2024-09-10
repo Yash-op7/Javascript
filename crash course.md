@@ -1151,3 +1151,11 @@ alice.sayHello();  // Hello, Alice
 ## Advantages of Prototypal Inheritance
 - Memory efficiency: Methods like sayHello aren’t copied to each instance of Person (as they would be in class-based inheritance). Instead, all instances share the same method through the prototype.
 - Flexibility: You can dynamically add methods or properties to an object’s prototype even after instances have been created.
+
+# `prototype` vs `__proto__`
+## `prototype`
+- This is a property of the constructor function which is used to create objects of a class using the `new` keyword.
+- It serves as a blueprint to all objects created by this constructor, properties and methods added to ConstructorFunction.prototype are available to all objects of that constructor.
+
+## `__proto__`:
+- This is a property of the object instances which point to the prototype object of the constructor function which created this obj.

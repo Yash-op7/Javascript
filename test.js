@@ -9,22 +9,12 @@ class Car {
     this.brand = brand;
     this.isFast = isFast;
   }
+  honk() {
 
+  }
 }
 
 const lambo = new Car('Lamborghini');
-lambo.topSpeed = '400mph';
-Object.seal(lambo);
-lambo.topSpeed = '350mph';
-
-print(lambo)
-
-const gcd = (x, y) => {
-  if (x > y) {
-      swap(x, y);
-  }
-  if (x === 0) return y;
-  return gcd(y%x, x);
-};
-
-print(gcd(5, 15));
+print(lambo.__proto__);
+lambo.__proto__ = null;
+print(lambo.__proto__ === Car.prototype)
