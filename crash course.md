@@ -1106,6 +1106,19 @@ class Child extends Parent {
 ```
 - method overriding is there
 
+## `super` keyword:
+- the 'super' keyword is used to call the constructor of its parent class to access the parent's properties and methods.
+```js
+super(args) // calls Parent's constructor
+super.parentMethod(args)  // calls parentMethod which is defined in the parent
+```
+> key points:
+- first of all, to initialize a child's object you must call the parent class's constructor in the child constructor, this is done by: `super(args)`
+- next if you want to access anything of the parent class then you need to do it through super.parentProperty, the parent's props and methods are not available directly in the object
+
+
+
+
 
 
 ### Constructor Functions
