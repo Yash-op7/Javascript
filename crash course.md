@@ -1011,6 +1011,10 @@ const arjun = {
 arjun.__proto__ = employee;
 arjun.calcTax();
 ```
+- js objects's special property `prototype`'s type is that its a reference to an Object or its `null`. basically its the reference or address of the parent object, like we're accessing the parent through the child
+- methods overriding, we can implement the methods again in the child which would take precedence over the the prototype's implementation
+
+## Classes in js
 
 
 ## more oops
