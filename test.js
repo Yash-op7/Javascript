@@ -1,15 +1,12 @@
-"use strict";
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
 
-function Fruit() {
-  this.color = 'red';
+  sayHello() {
+    console.log('Hello, ' + this.name);
+  }
 }
 
-Fruit.prototype.info = function() {
-  console.log(`This fruit is ${this.color}.`);
-}
-
-const apple = new Fruit();
-
-console.log(apple);
-
-apple.info();
+const alice = new Person('Alice');
+alice.sayHello();  // Hello, Alice

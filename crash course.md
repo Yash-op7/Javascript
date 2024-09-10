@@ -971,4 +971,84 @@ Key Fact: Promises are asynchronous by nature, but they do not execute immediate
 5. Async/Await
 - What is `async/await`?
   - `async`/`await` is syntactic sugar introduced in ES2017 (ES8) to write asynchronous code that looks synchronous.
-  - async functions return a Promise, and await pauses the execution of the function until the Promise is resolved or rejecte0d.
+  - async functions return a Promise, and await pauses the execution of the function until the Promise is resolved or rejected.
+
+# OOP
+consider this example:
+```js
+"use strict";
+
+function Fruit() {
+  this.color = 'red';
+  this.greet = function() {
+    console.log('greetings');
+  }
+}
+
+Fruit.prototype.info = function() {
+  console.log(`This fruit is ${this.color}.`);
+}
+
+const apple = new Fruit();
+
+console.log(apple);
+
+apple.info();
+apple.greet();
+
+console.log(typeof Fruit)
+```
+### Constructor Functions
+- In JavaScript, you can create objects using constructor functions (like `Fruit`).
+When called with `new`, the constructor function creates a new object, sets up `this` to refer to the new object, and assigns properties to it.
+### Prototype
+- Every function in JavaScript has a special property called `prototype`, which is an object. This prototype is shared by all instances created by that function (like all `Fruit` objects).
+Properties or methods added to the prototype are shared by all instances, reducing memory usage (since the method is only stored once).
+### Prototypal Inheritance
+- When an object accesses a property or method that it doesn't have, JavaScript looks up the prototype chain to find it.
+Objects in JavaScript inherit from other objects, not from classes, which is the essence of prototypal inheritance.
+
+consider this code:
+```js
+"use strict";
+
+function Person(name) {
+  this.name = name;
+}
+Person.prototype.sayHello = function() {
+  console.log(`Hello, ${this.name}`);
+}
+const alice = new Person('Alice');
+
+alice.sayHello();
+```
+
+# To visualize the prototype chain, you can check it like this:
+
+```js
+console.log(alice.__proto__ === Person.prototype);  // true
+console.log(Person.prototype.__proto__ === Object.prototype);  // true
+console.log(Object.prototype.__proto__ === null);  // true
+```
+### ⭐️ This shows that alice's prototype is Person.prototype, which in turn inherits from Object.prototype. All objects in JavaScript ultimately inherit from Object.prototype.
+
+## Class based syntax:
+- In languages like C++, you define a class that represents a blueprint for objects. In JavaScript:
+
+  - You can still use class-like syntax introduced in ES6, but it's just syntactic sugar over the prototype-based inheritance.
+
+  - Here's how the above code would look like in class syntax:
+  ```js
+  class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  sayHello() {
+    console.log('Hello, ' + this.name);
+  }
+}
+
+const alice = new Person('Alice');
+alice.sayHello();  // Hello, Alice
+```
