@@ -1,12 +1,5 @@
-class Person {
-  constructor(name) {
-    this.name = name;
-  }
+"use strict";
 
-  sayHello() {
-    console.log('Hello, ' + this.name);
-  }
-}
-
-const alice = new Person('Alice');
-alice.sayHello();  // Hello, Alice
+let a = [1,2];
+a[5] = 3;
+console.log(a);

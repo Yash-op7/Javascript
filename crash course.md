@@ -165,7 +165,15 @@ filtered_array = arr.filter(x => x > 1);     // [2, 3] (filters array)
 sum = arr.reduce((a, b) => a + b);  // 6 (reduces to single value)
 
 arr = [1, 2, 'bird']    // can have different data types
+console.log(typeof arr);  // object
 ```
+We can also do this:
+```js
+let a = [1,2];
+a[5] = 3;
+console.log(a);
+```
+The values in the middle will get initialized with undefined
 
 ## string interpolation:
 ```js
@@ -974,6 +982,13 @@ Key Fact: Promises are asynchronous by nature, but they do not execute immediate
   - async functions return a Promise, and await pauses the execution of the function until the Promise is resolved or rejected.
 
 # OOP
+
+<!-- - https://www.youtube.com/watch?v=N-O4w6PynGY&list=PLGjplNEQ1it_oTvuLRNqXfz_v_0pq6unW&index=13 -->
+
+## Prototypes in JS
+- A js object is an entity having state and behavior (properties and methods).
+
+
 consider this example:
 ```js
 "use strict";
@@ -1038,8 +1053,8 @@ console.log(Object.prototype.__proto__ === null);  // true
   - You can still use class-like syntax introduced in ES6, but it's just syntactic sugar over the prototype-based inheritance.
 
   - Here's how the above code would look like in class syntax:
-  ```js
-  class Person {
+```js
+class Person {
   constructor(name) {
     this.name = name;
   }
@@ -1048,7 +1063,9 @@ console.log(Object.prototype.__proto__ === null);  // true
     console.log('Hello, ' + this.name);
   }
 }
-
 const alice = new Person('Alice');
 alice.sayHello();  // Hello, Alice
 ```
+## Advantages of Prototypal Inheritance
+- Memory efficiency: Methods like sayHello aren’t copied to each instance of Person (as they would be in class-based inheritance). Instead, all instances share the same method through the prototype.
+- Flexibility: You can dynamically add methods or properties to an object’s prototype even after instances have been created.
