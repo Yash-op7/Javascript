@@ -971,4 +971,4 @@ Key Fact: Promises are asynchronous by nature, but they do not execute immediate
 5. Async/Await
 - What is `async/await`?
   - `async`/`await` is syntactic sugar introduced in ES2017 (ES8) to write asynchronous code that looks synchronous.
-  - async functions return a Promise, and await pauses the execution of the function until the Promise is resolved or rejected.
+  - async functions return a Promise, and await pauses the execution of the function until the Promise is resolved or rejecte0d.
