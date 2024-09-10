@@ -1029,6 +1029,8 @@ class MyClass{
 }
 let myObj = new MyClass();
 ```
+### Constructor Method
+`constructor()` - either you define it, or js will define it implicitly
 
 ## more oops
 consider this example:
@@ -1055,6 +1057,44 @@ apple.greet();
 
 console.log(typeof Fruit)
 ```
+
+## Limiting the flexibility and freedom to change property of js objects:
+- JavaScript objects are inherently flexible, and by default, you can add and remove properties at any time. However, you can use some techniques to limit this behavior:
+### 1. `Object.freeze()`: Prevents adding, removing, or modifying properties.
+```js
+class Car {
+  constructor(brand, isFast = false) {
+    this.brand = brand;
+    this.isFast = isFast;
+  }
+}
+
+const lambo = new Car('Lamborghini');
+Object.freeze(lambo);
+
+lambo.topSpeed = '400mph'; // This will not work
+console.log(lambo.topSpeed); // undefined
+```
+### 2. `Object.seal()`: Prevents adding or removing properties but allows modification of existing properties.
+
+```js
+class Car {
+  constructor(brand, isFast = false) {
+    this.brand = brand;
+    this.isFast = isFast;
+  }
+}
+
+const lambo = new Car('Lamborghini');
+Object.seal(lambo);
+
+lambo.topSpeed = '400mph'; // This will not work
+lambo.isFast = true; // This will work
+console.log(lambo.topSpeed); // undefined
+```
+
+
+
 ### Constructor Functions
 - In JavaScript, you can create objects using constructor functions (like `Fruit`).
 When called with `new`, the constructor function creates a new object, sets up `this` to refer to the new object, and assigns properties to it.

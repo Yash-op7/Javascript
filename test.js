@@ -1,15 +1,20 @@
 "use strict";
 
-const employee = {
-  calcTax() {
-    console.log('tax is 10%');
-  },
-};
+function print(x) {
+  console.log(x);
+}
 
-const arjun = {
-  salary: '50k'
-};
+class Car {
+  constructor(brand, isFast=false) {
+    this.brand = brand;
+    this.isFast = isFast;
+  }
 
-// ⭐️ now if we want to access the properties and methods of the employee object in the arjun object then we can write employee as a prototype for arjun:
-arjun.__proto__ = employee;
-arjun.calcTax();
+}
+
+const lambo = new Car('Lamborghini');
+lambo.topSpeed = '400mph';
+Object.seal(lambo);
+lambo.topSpeed = '350mph';
+
+print(lambo)
