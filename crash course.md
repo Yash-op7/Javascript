@@ -1015,7 +1015,20 @@ arjun.calcTax();
 - methods overriding, we can implement the methods again in the child which would take precedence over the the prototype's implementation
 
 ## Classes in js
+- Class is a program-code template for creating objects
+```js
+class MyClass{
+  constructor() {
+    this.x = x;
+    ...
+  }
 
+  myMethod() {
+    ...
+  }
+}
+let myObj = new MyClass();
+```
 
 ## more oops
 consider this example:
