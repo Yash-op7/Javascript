@@ -1117,7 +1117,12 @@ super.parentMethod(args)  // calls parentMethod which is defined in the parent
 - next if you want to access anything of the parent class then you need to do it through super.parentProperty, the parent's props and methods are not available directly in the object
 
 
+# OOP key insights:
+## related to Classes:
+- `constructor`: This is a special method that is automatically called when a new object is instantiated using new. It’s similar to the constructors in C++ or Python.
+- An instance's `.__proto__` (or `Object.getPrototypeOf(instance)`) points to the constructor's prototype obj. This prototype object contains methods but does not include instance-specific properties.
 
+![alt text](image-3.png)
 
 
 

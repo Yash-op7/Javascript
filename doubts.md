@@ -1,4 +1,6 @@
 in oops:
+1. when you say this: Methods: All methods in the class are added to the prototype of the instance.
+do you mean only methods are added to the prototype of the instance
 1. super keyword use other than super class constructor, inside the child class methods, why do super.parentMethod(args) when you can just do this.parentMethod(args)
 2. how to see what properties and methods are accessible through super.something, this gives error: console.log(super) inside the work() method.
 3. lets say we have 3 classes which are inheriting from one another, class CloudEngineer inherits from class Engineer, and class Engineer inherits from class Person, in both Engineer and Person classes there is a method defined called eat(), but its not present in class CloudEngineer, when i want to access the parent of cloudEngineer's eat() method in the cloudEngineer class, i can just do this.eat() or super.eat(), but how do i get the parent's parent's defintion of eat() in cloudEngineer, i was not able to do super.super.eat();
