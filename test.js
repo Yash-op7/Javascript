@@ -34,6 +34,12 @@ class CloudEngineer extends Engineer {
     this.eat();
     console.log(`${this.name} is working as a ${this.specialty} ${this.profession}`);
   }
+  get spec() {
+    return this.specialty;
+  }
+  set spec(specialty) {
+    this.specialty = specialty;
+  }
 }
 
 // const guy = new Person('tom');
@@ -45,3 +51,6 @@ class CloudEngineer extends Engineer {
 
 const tim = new CloudEngineer('tim');
 tim.work();
+
+// console.log(tim.profession)
+console.log(tim.spec)

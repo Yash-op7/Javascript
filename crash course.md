@@ -1121,6 +1121,17 @@ super.parentMethod(args)  // calls parentMethod which is defined in the parent
 ## related to Classes:
 - `constructor`: This is a special method that is automatically called when a new object is instantiated using new. It’s similar to the constructors in C++ or Python.
 - An instance's `.__proto__` (or `Object.getPrototypeOf(instance)`) points to the constructor's prototype obj. This prototype object contains methods but does not include instance-specific properties.
+> Nuances:
+- JavaScript doesn't have true classes like C++ or Java. Classes in JS are just functions under the hood and follow prototypal inheritance.
+- `this` behavior: Inside methods, this refers to the instance. Be mindful of losing the this context when passing class methods as callbacks or event listeners (more on that later).
+## related to Inheritance:
+- `extends`: Establishes inheritance.
+- `super()`: Calls the parent class constructor. Must be called before accessing this in the child constructor.
+- If no constructor is provided in the child class, JavaScript automatically calls `super()` with the same arguments as the parent constructor.
+>Nuances
+- Method Overriding: Child classes can override parent class methods, but calling super.methodName() allows access to the parent’s implementation.
+
+
 
 ![alt text](image-3.png)
 
@@ -1190,3 +1201,24 @@ alice.sayHello();  // Hello, Alice
 
 ## `__proto__`:
 - This is a property of the object instances which point to the prototype object of the constructor function which created this obj.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# JS Tricks:
+## Integer division:
+> `(a/b >> 0)` or `(~~(a/b))` or `(a/b | 0)`
