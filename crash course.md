@@ -1189,6 +1189,49 @@ console.log(MathUtils.calculateCircumference(5));  // Output: 31.4159
 > key point(s):
 Static methods/properties are accessed via the class name, cannot be accessed via the instance.
 
+> ## Prototypal Inheritance (Under the Hood)
+Even though modern JavaScript uses the class syntax, it’s still based on prototypal inheritance. This means that every object has a prototype from which it can inherit properties and methods.
+
+```js
+Copy code
+function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.speak = function() {
+  console.log(`${this.name} makes a sound.`);
+};
+
+const dog = new Animal('Dog');
+dog.speak();  // Output: Dog makes a sound.
+```
+> Key Points:
+- Prototypes are objects that act as a blueprint for other objects.
+- Every function in JavaScript has a prototype property, which can be used to add shared methods.
+- While class makes syntax clearer, understanding prototype chaining is essential for debugging or advanced use-cases.
+- `Object.create()` is another way to create objects that explicitly set the prototype.
+```js
+const personPrototype = {
+  greet() {
+    console.log('Hello!');
+  },
+  introduce() {
+    console.log(`Hi, I'm ${this.name}`);
+  }
+};
+// Create a new person like this from the prototype
+const person = Object.create(personPrototype);
+person.name = 'Alice';
+
+// or like this from another object as a link/hook
+const person2 = Object.create(Object.getPrototypeOf(person));
+```
+> ## `this` in OOP
+The `this` keyword can be tricky in JavaScript, especially inside callbacks or event listeners.
+
+`this` in Methods:
+In class methods, `this` refers to the instance of the class.
+
 
 ![alt text](image-3.png)
 

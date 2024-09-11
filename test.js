@@ -1,12 +1,11 @@
-class Car {
-  constructor(brand) {
-    this.brand = brand;
+class Person {
+  constructor(name) {
+    this.name = name;
   }
-  #speed= 0;
-  info() {
-    console.log(`a ${this.brand} car with a speed of ${this.#speed}`);
+  eat() {
+    console.log(`${this.name} is eating.`);
   }
 }
 
-const l = new Car('lambo');
-l.info();
+const tom = new Person('tom');
+tom.eat();
