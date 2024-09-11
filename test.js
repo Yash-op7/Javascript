@@ -9,3 +9,5 @@ class Person {
 
 const tom = new Person('tom');
 tom.eat();
+
+setTimeout(tom.eat, 1000);
