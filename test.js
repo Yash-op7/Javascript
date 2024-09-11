@@ -1,25 +1,12 @@
 class Car {
-  constructor(speed) {
-    this.#speed = speed;
+  constructor(brand) {
+    this.brand = brand;
   }
-  #speed;
-
-  #explode = () => {
-    console.log('kaboom 💥');
-  }
-
-  accelerate() {
-    this.#speed += 10;
-    console.log(`Speed: ${this.#speed}`);
-    if(this.#speed > 35) {
-      this.#explode();
-    }
+  #speed= 0;
+  info() {
+    console.log(`a ${this.brand} car with a speed of ${this.#speed}`);
   }
 }
 
-const myCar = new Car(5);
-myCar.accelerate();  // Output: Speed: 15
-myCar.accelerate();  // Output: Speed: 25
-myCar.accelerate();  // Output: Speed: 35
-myCar.accelerate();  // Output: Speed: 45, hence 💥
-// console.log(myCar.#speed);  // Error: Private field '#speed' must be declared in an enclosing class
+const l = new Car('lambo');
+l.info();
