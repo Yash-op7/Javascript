@@ -1,56 +1,25 @@
-"use strict";
+class Car {
+  constructor(speed) {
+    this.#speed = speed;
+  }
+  #speed;
 
-class Person {
-  constructor(name) {
-    this.name = name;
-  }
-  eat() {
-    console.log(`${this.name} the regular guy is eating`);
+  #explode = () => {
+    console.log('kaboom 💥');
   }
 
-}
-
-class Engineer extends Person {
-  constructor(name) {
-    super(name);
-    this.profession = 'Engineer';
-    this.major = 'Comp. Sci';
-  }
-  eat() {
-    console.log(`${this.name} the ${this.profession} is eating`);
-  }
-  work() {
-    this.eat();
-    console.log(`${this.name} is working as a ${this.profession}`);
+  accelerate() {
+    this.#speed += 10;
+    console.log(`Speed: ${this.#speed}`);
+    if(this.#speed > 35) {
+      this.#explode();
+    }
   }
 }
 
-class CloudEngineer extends Engineer {
-  constructor(name) {
-    super(name);
-    this.specialty = 'Cloud';
-  }
-  work() {
-    this.eat();
-    console.log(`${this.name} is working as a ${this.specialty} ${this.profession}`);
-  }
-  get spec() {
-    return this.specialty;
-  }
-  set spec(specialty) {
-    this.specialty = specialty;
-  }
-}
-
-// const guy = new Person('tom');
-// guy.eat();
-
-// const sde = new Engineer('bob');
-// sde.work();
-// console.log(sde.name);
-
-const tim = new CloudEngineer('tim');
-tim.work();
-
-// console.log(tim.profession)
-console.log(tim.spec)
+const myCar = new Car(5);
+myCar.accelerate();  // Output: Speed: 15
+myCar.accelerate();  // Output: Speed: 25
+myCar.accelerate();  // Output: Speed: 35
+myCar.accelerate();  // Output: Speed: 45, hence 💥
+// console.log(myCar.#speed);  // Error: Private field '#speed' must be declared in an enclosing class

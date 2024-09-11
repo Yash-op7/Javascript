@@ -1,27 +1,27 @@
 # Key concepts and differences in JS (compared to C++, Python, Java):
 
-- ## Dynamic Typing:
+- > ## Dynamic Typing:
     - Variables can hold values of any type without explicit type declarations.
     - Type Coercion
-- ## First-class functions:
-    - ### Functions as Objects: 
+- > ## First-class functions:
+    - > ### Functions as Objects: 
         - Functions in JavaScript are first-class citizens, meaning they can be assigned to variables, passed as arguments, and returned from other functions. This allows for powerful functional programming patterns.
-    - ### Closures:
+    - > ### Closures:
         - A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives a function access to its outer scope.
         - This is a fundamental concept, especially for asynchronous programming.
 
 
 # Syntax
 
-## Loops:
+> ## Loops:
 For and while are same as c++
-### `for`:
+> ### `for`:
 ```js
 for (let i = 0; i < 5; i++) {
   console.log(i);  // Outputs: 0, 1, 2, 3, 4
 }
 ```
-### `while`:
+> ### `while`:
 ```js
 let i = 0;
 while (i < 5) {
@@ -30,7 +30,7 @@ while (i < 5) {
 }
 ```
 
-### `for in`: to iterate over enumerable properties of an object
+> ### `for in`: to iterate over enumerable properties of an object
 ```js
 for (let key in object) {
   // Code to execute for each property
@@ -43,7 +43,7 @@ for (let key in person) {
 }
 ```
 
-### `for of`: to loop iterable objects like arrays, strings, maps,
+> ### `for of`: to loop iterable objects like arrays, strings, maps,
 ```js
 for (let value of iterable) {
   // Code to execute for each value
@@ -57,15 +57,15 @@ for (let value of array) {
 ```
 
 # `var`, `let` and `const`
-## `var`
+> ## `var`
 - function-scoped: if its defined anywhere in the global space, then it is immediately hoisted and is available everywhere in the global scope, otherwise if its defined in a function then its only accessible within that function
 - hoisted, meaning you can use them before the declaration line, but they are initialized to `undefined`
 
-## `let`
+> ## `let`
 - block scoped, not accessable outside the block
 - not hoisted
 
-## `var` v/s let or const, Basic difference:
+> ## `var` v/s let or const, Basic difference:
 these are the two fundamentally basic differences:
 1. if you define a variable using let or const inside any if block, then it won't be available outside the block, but if you use var inside an if block, then it will be available everywhere inside the current function (by default we can consider the global scope as a main function of sorts)
 2. var is hoisted and initialized wth `undefined` and let/const are not hosited, they are not initialized and TDZ applies to them (Temporal Dead Zone, that is while they are hoisted they cannot be accessed or initialized before the declaration statement.) 
@@ -75,10 +75,10 @@ Note:
 - const objects and arrays can still have their contents modified.
 
 # data types
-## primitve
+> ## primitve
 - Number, String, Boolean, null, undefined, Symbol, and BigInt.
 - no `char` type, use String
-## non-primitive:
+> ## non-primitive:
 - Non-primitive types: Objects (arrays, functions, etc.).
 
 ```js
@@ -109,23 +109,23 @@ switch (x) {
 ⭐️ Note: Always include break to avoid fall-through behavior in switch statements.
 
 # Functions:
-## Function Declaration
+> ## Function Declaration
 ```js
 function greet(name) {
   return `Hello, ${name}`;
 }
 ```
-## Function Expressions (Anonymous Functions)
+> ## Function Expressions (Anonymous Functions)
 ```js
 const add = function(a, b) {
   return a + b;
 };
 ```
-## Arrow Functions (ES6+)
+> ## Arrow Functions (ES6+)
 ```js
 const multiply = (a, b) => a * b;  // Concise syntax
 ```
-## default params:
+> ## default params:
 ```js
 function greet(name = "World") {
   return `Hello, ${name}`;
@@ -146,16 +146,16 @@ let person = {
   
 person.greet();
   ```
-- ### Dot notation: `person.name`
-- ### Bracket notation: `person['name']`
+- > ### Dot notation: `person.name`
+- > ### Bracket notation: `person['name']`
 
-## Destructuring:
+> ## Destructuring:
 ```js
 let { name, age } = person;
 console.log(name, age);
 ```
 
-## Arrays:
+> ## Arrays:
 ```js
 let arr = [1, 2, 3];
 arr.push(4);  // Adds to end
@@ -175,7 +175,7 @@ console.log(a);
 ```
 The values in the middle will get initialized with undefined
 
-## string interpolation:
+> ## string interpolation:
 ```js
 let name = "John";
 let greeting = `Hello, ${name}!`;
@@ -249,7 +249,7 @@ console.log(typeof x); // "undefined"
 - Use Cases: You typically use null to represent the absence of a value where you expect a value, and undefined to represent uninitialized variables or non-existent properties.
 
 # Data types:
-## Number
+> ## Number
 - very large range
 - used for both int and float values
 - with float has precision upto 15-17 decimals.
@@ -269,7 +269,7 @@ console.log(result); // Output: NaN
 // Checking for NaN
 console.log(Number.isNaN(result)); // Output: true
 ```
-## BigInt:
+> ## BigInt:
 - for numbers outside Number range
 - For integers larger than Number.MAX_SAFE_INTEGER (2^53 - 1), use BigInt.
 - initialization: use n at the end:
@@ -304,23 +304,23 @@ let isFalse = false;
 
 
 # Useful methods:
-## Array Methods:
-### 1. `forEach()`
+> ## Array Methods:
+> ### 1. `forEach()`
 ```js
 [1, 2, 3].forEach(num => console.log(num));
 // Output: 1 2 3
 ```
-### 2. `map()`:
+> ### 2. `map()`:
 ```js
 const doubled = [1, 2, 3].map(num => num * 2);
 console.log(doubled);  // [2, 4, 6]
 ```
-### 3. `ƒilter()`:
+> ### 3. `ƒilter()`:
 ```js
 const evens = [1, 2, 3, 4].filter(num => num % 2 === 0);
 console.log(evens);  // [2, 4]
 ```
-### 4. `reduce()`:
+> ### 4. `reduce()`:
 ```js
 const sum = [1, 2, 3].reduce((acc, num) => acc + num, 0);
 console.log(sum);  // 6
@@ -328,40 +328,40 @@ console.log(sum);  // 6
 Also `reduceRight()`: The reduceRight() method processes the array from right to left, accumulating a result. Could be useful in finding the minimum value from right or from left or something like that `¯\_(ツ)_/¯`
 
 
-### 5. `find()`: Returns the first element that satisfies a condition.
+> ### 5. `find()`: Returns the first element that satisfies a condition.
 
 ```js
 const result = [1, 2, 3].find(num => num > 1);
 console.log(result);  // 2
 ```
 
-### 6. `findIndex()`:
+> ### 6. `findIndex()`:
 ```js
 const index = [1, 2, 3].findIndex(num => num > 1);
 console.log(index);  // 1
 ```
-### 7. `some()`:
+> ### 7. `some()`:
 ```js
 const hasEven = [1, 3, 5].some(num => num % 2 === 0);
 console.log(hasEven);  // false
 ```
-### 8. `every()`:
+> ### 8. `every()`:
 ```js
 const allPositive = [1, 2, 3].every(num => num > 0);
 console.log(allPositive);  // true
 ```
-### 9. `includes()`:
+> ### 9. `includes()`:
 ```js
 const hasTwo = [1, 2, 3].includes(2);
 console.log(hasTwo);  // true
 ```
-### 10. `concats()`: join two or more arrays
+> ### 10. `concats()`: join two or more arrays
 ```js
 const combined = [1, 2].concat([3, 4]);
 console.log(combined);  // [1, 2, 3, 4]
 ```
 
-### 11. `slice()`: Returns a shallow copy of a portion of the array (non-destructive).
+> ### 11. `slice()`: Returns a shallow copy of a portion of the array (non-destructive).
 - In JS, the terms destructive and non-destructive are used to describe whether a method or operation modifies the original data structure (like an array) or not.
 - Destructive (Mutating) Methods and Non-Destructive (Non-Mutating) Methods
 - Destructive methods modify the original array directly.
@@ -370,7 +370,7 @@ console.log(combined);  // [1, 2, 3, 4]
 const part = [1, 2, 3, 4].slice(1, 3);
 console.log(part);  // [2, 3]
 ```
-### 12. `splice()`: Adds/removes elements from an array (destructive).
+> ### 12. `splice()`: Adds/removes elements from an array (destructive).
 `splice(startIndex, deleteCount, item1, item2, ...)`
 ```js
 const arr = [1, 2, 4, 5];
@@ -385,7 +385,7 @@ const arr = [1, 2, 3];
 arr.splice(1, 1);  // Removes one element at index 1
 console.log(arr);  // [1, 3]
 ```
-### 13. `sort()`: sorts the array *inplace* ⭐️
+> ### 13. `sort()`: sorts the array *inplace* ⭐️
 - Comparison Function: The function provided to sort() should return a negative number if the first argument should come before the second, a positive number if the second should come before the first, and 0 if they are equal.
 - In-Place Sorting: The sort() method sorts the array in place and returns the sorted array.
 - Stability: JavaScript’s Array.prototype.sort() is stable in modern engines, meaning it maintains the relative order of elements with equal sort keys.
@@ -395,7 +395,7 @@ const arr = [1, 2, 3];
 arr.splice(1, 1);  // Removes one element at index 1
 console.log(arr);  // [1, 3]
 ```
-### ⭐️ Custom sort:
+> ### ⭐️ Custom sort:
 ```js
 let listOfTuples = [
   [1, 2, 9, -2],
@@ -421,14 +421,14 @@ console.log(listOfTuples);
 // Output: [ [3, 4, 3], [1, 2, 9] ]
 ```
 
-### 14. `reverse()`: reverses the array in place.
+> ### 14. `reverse()`: reverses the array in place.
 ```js
 const arr = [1, 2, 3];
 arr.reverse();
 console.log(arr);  // [3, 2, 1]
 ```
 
-## `String` Methods:
+> ## `String` Methods:
 ```js
 
 // split()
@@ -472,7 +472,7 @@ console.log('hello'.charAt(1));  // 'e'
 console.log('hello'.startsWith('he'));  // true
 console.log('hello'.endsWith('lo'));  // true
 ```
-## `Object` Methods:
+> ## `Object` Methods:
 ```js
 
 // Object.freeze()
@@ -482,7 +482,7 @@ const obj = Object.freeze({ a: 1 });
 obj.a = 2;  // No effect, object is frozen
 ```
 
-## Misc. Methods/Functions:
+> ## Misc. Methods/Functions:
 ```js
 -> setTimeout()
 // Executes a function after a specified delay.
@@ -563,7 +563,7 @@ obj.name = "Bob";  // Object is mutable, properties can be changed
 ```
 
 # Data Structures:
-## `Set`:
+> ## `Set`:
 ```js
 const set = new Set([1, 2, 3]);
 set.add(3);  // No effect, duplicates not allowed
@@ -576,7 +576,7 @@ console.log(set.has(1));  // true
 -`size`: Returns the number of elements.
 - `clear()`: Removes all elements.
 
-## `Map`:
+> ## `Map`:
 ```js
 const map = new Map();
 map.set('name', 'Alice');
@@ -658,7 +658,7 @@ try {
 }
 ```
 # Advanced Operators:
-## Nullish Coalescing (??)
+> ## Nullish Coalescing (??)
 - Returns the right-hand operand if the left-hand operand is null or undefined.
 
 ```js
@@ -666,7 +666,7 @@ let x = null;
 let result = x ?? 'default';  // 'default'
 ```
 
-## Optional Chaining (?.)
+> ## Optional Chaining (?.)
 - Safely access deeply nested properties. If a property is null or undefined, it returns undefined instead of throwing an error.
 
 Example:
@@ -677,7 +677,7 @@ console.log(obj.user?.name);  // Alice
 console.log(obj.user?.address?.city);  // undefined, no error
 ```
 
-## Ternary Operator (?:)
+> ## Ternary Operator (?:)
 ```js
 let isLoggedIn = true;
 let greeting = isLoggedIn ? 'Welcome back!' : 'Please log in';
@@ -689,7 +689,7 @@ let greeting = isLoggedIn ? 'Welcome back!' : 'Please log in';
 
 
 # Other concepts:
-## Closures:
+> ## Closures:
 A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope. This is a powerful concept often used in callbacks, asynchronous code, and function factories.
 ```js
 function outer() {
@@ -703,7 +703,7 @@ const increment = outer();
 increment();  // 1
 increment();  // 2
 ```
-## Promises & Async/Await: 
+> ## Promises & Async/Await: 
 Promises and async/await are essential for working with asynchronous operations. You probably touched on this with the this context explanation, but it's good to be aware of how Promises and async/await manage asynchronous control flow.
 ```js
 const fetchData = async () => {
@@ -716,7 +716,7 @@ const fetchData = async () => {
   }
 };
 ```
-## 3. Modules (ES6 Modules)
+> ## 3. Modules (ES6 Modules)
 ES6 modules allow you to split your code into multiple files and manage dependencies using import and export.
 
 ```js
@@ -731,7 +731,7 @@ import { add, subtract } from './utils.js';
 console.log(add(5, 3));  // 8
 ```
 
-## Prototype and Prototypal Inheritance
+> ## Prototype and Prototypal Inheritance
 JavaScript uses prototypal inheritance, meaning objects can inherit properties from other objects through the prototype chain.
 Prototype basics:
 
@@ -749,7 +749,7 @@ alice.sayHello();  // Hello, Alice
 ```
 Why it's useful: JavaScript doesn’t have classical inheritance like other languages (e.g., C++ or Java), so understanding prototypes is essential for mastering how inheritance works in JS.
 
-## Class Syntax:
+> ## Class Syntax:
 ```js
 class Animal {
   constructor(name) {
@@ -764,7 +764,7 @@ class Animal {
 const dog = new Animal('Dog');
 dog.speak();  // Dog makes a sound.
 ```
-## Destructuring and Rest/Spread Operators
+> ## Destructuring and Rest/Spread Operators
 - Destructuring lets you easily extract values from arrays or objects.
 ```js
 const [a, b] = [1, 2];
@@ -777,7 +777,7 @@ const newNums = [...nums, 4, 5];  // [1, 2, 3, 4, 5]
 
 ⭐️ const sum = (...args) => args.reduce((acc, val) => acc + val, 0);
 ```
-## Cool Tricks:
+> ## Cool Tricks:
 ```js
 -> IIFE (Immediately Invoked Function Expression):
 
@@ -803,7 +803,7 @@ function greet(name = 'Guest') {
 greet();  // Hello, Guest
 ```
 
-## `Array.prototype.flatMap()`
+> ## `Array.prototype.flatMap()`
 - The flatMap() method maps each element using a mapping function and then flattens the result into a new array.
 
 Example:
@@ -820,7 +820,7 @@ console.log(result); // Output: [1, 1, 2, 4, 3, 9]
 
 
 # Building Foundations: Asynchronous JS
-## JS's single-threaded nature
+> ## JS's single-threaded nature
 
 - A thread is a single sequence of execution in a program.
 - JS is single threaded meaning it can only execute one piece of code at a time unlike c++ or python which can be multithreaded, this might give the indication that JS is less capable but JS handles concurrency in a very unique way, using non-blocking asynchronous mechanisms.
@@ -833,19 +833,19 @@ console.log(result); // Output: [1, 1, 2, 4, 3, 9]
   setTimeout(() => {console.log('finished async task')}, 1000);
   console.log('end')
   ```
-- ## `Key Takeaway:` JavaScript is single-threaded, but it can handle asynchronous operations efficiently by delegating tasks and using its event loop.
+- > ## `Key Takeaway:` JavaScript is single-threaded, but it can handle asynchronous operations efficiently by delegating tasks and using its event loop.
 
-## 2. Event Loop and Call Stack
-### Call Stack: 
+> ## 2. Event Loop and Call Stack
+> ### Call Stack: 
 - The call stack is a data structure used to keep track of function calls in JavaScript. When you call a function, it gets pushed onto the stack. Once the function finishes, it gets popped off.
 
 - This is how synchronous code is executed in a single-threaded manner.
-### Event Loop:
+> ### Event Loop:
 - The event loop is the mechanism that enables asynchronous code execution in JavaScript.
 - When an asynchronous operation (like a network request, timer, or file reading) is made, it is offloaded to the browser's **Web APIs or Node.js APIs**, which handle the operation. These are non-blocking and allow the main thread (call stack) to continue executing.
 - Once the asynchronous task is complete (e.g., a response from a server), the event loop checks if the call stack is empty. If it is, the task's callback function gets placed in the callback queue and executed.
 
-## Callbacks
+> ## Callbacks
 - A callback is a function passed as an argument to another function, to be executed later, usually when an asynchronous operation completes.
 - Callbacks were the original way to handle asynchronous tasks in JavaScript.
 ```js
@@ -860,13 +860,13 @@ getData((message) => {
   console.log(message);  // Output: Data Received (after 1 second)
 });
 ```
-### Why Use Callbacks?
+> ### Why Use Callbacks?
 
 - Callbacks allow us to wait for asynchronous tasks without blocking the rest of the program.
 - However, callbacks can lead to callback hell, a scenario where nested callbacks make the code hard to read and maintain.
 
-## 4. Promises
-### What is a Promise?
+> ## 4. Promises
+> ### What is a Promise?
 - A Promise is a modern and cleaner way to handle asynchronous operations. It represents a value that may be available <span style="color:cyan;">now</span>, in the <span style="color:cyan;">future</span>, or <span style="color:cyan;">never</span>.
 
 - Promises have three states:
@@ -876,7 +876,7 @@ getData((message) => {
 
 ⭐️ Promises are asynchronous by nature, but they do not execute immediately. They run after the current synchronous code completes (via the event loop).
 
-## 
+> ## 
 You're welcome! Let's dive into asynchronous JavaScript and some foundational concepts like callbacks, promises, async/await, event loop, and the single-threaded nature of JavaScript. I'll also compare it to languages like C++ and Python to help build a stronger understanding.
 
 1. JavaScript’s Single-Threaded Nature
@@ -985,7 +985,7 @@ Key Fact: Promises are asynchronous by nature, but they do not execute immediate
 
 <!-- - https://www.youtube.com/watch?v=N-O4w6PynGY&list=PLGjplNEQ1it_oTvuLRNqXfz_v_0pq6unW&index=13 -->
 
-## Prototypes in JS
+> ## Prototypes in JS
 - A js object is an entity having state and behavior (properties and methods).
 - every obj in js has an automatically created special inbuilt property.
 - ![alt text](image-1.png)
@@ -994,7 +994,7 @@ Key Fact: Promises are asynchronous by nature, but they do not execute immediate
 ![alt text](image-2.png)
   - here we didnt define student.abc so its undefined, similarly we didn't define toString() method but its there, thats because its inherited from the Prototype object.
 - js objects have a by default special property called prototype which has some special properties and methods.
-### Practical implementation
+> ### Practical implementation
 - we can make our own prototypes:
 ```js
 const employee = {
@@ -1014,7 +1014,7 @@ arjun.calcTax();
 - js objects's special property `prototype`'s type is that its a reference to an Object or its `null`. basically its the reference or address of the parent object, like we're accessing the parent through the child
 - methods overriding, we can implement the methods again in the child which would take precedence over the the prototype's implementation
 
-## Classes in js
+> ## Classes in js
 - Class is a program-code template for creating objects
 ```js
 class MyClass{
@@ -1029,10 +1029,10 @@ class MyClass{
 }
 let myObj = new MyClass();
 ```
-### Constructor Method
+> ### Constructor Method
 `constructor()` - either you define it, or js will define it implicitly
 
-## more oops
+> ## more oops
 consider this example:
 ```js
 "use strict";
@@ -1058,9 +1058,9 @@ apple.greet();
 console.log(typeof Fruit)
 ```
 
-## Limiting the flexibility and freedom to change property of js objects:
+> ## Limiting the flexibility and freedom to change property of js objects:
 - JavaScript objects are inherently flexible, and by default, you can add and remove properties at any time. However, you can use some techniques to limit this behavior:
-### 1. `Object.freeze()`: Prevents adding, removing, or modifying properties.
+> ### 1. `Object.freeze()`: Prevents adding, removing, or modifying properties.
 ```js
 class Car {
   constructor(brand, isFast = false) {
@@ -1075,7 +1075,7 @@ Object.freeze(lambo);
 lambo.topSpeed = '400mph'; // This will not work
 console.log(lambo.topSpeed); // undefined
 ```
-### 2. `Object.seal()`: Prevents adding or removing properties but allows modification of existing properties.
+> ### 2. `Object.seal()`: Prevents adding or removing properties but allows modification of existing properties.
 
 ```js
 class Car {
@@ -1093,7 +1093,7 @@ lambo.isFast = true; // This will work
 console.log(lambo.topSpeed); // undefined
 ```
 
-## Inheritance
+> ## Inheritance
 - passing down properties and methods from parent class to child class
 - done using `extends` keyword
 ```js
@@ -1106,7 +1106,7 @@ class Child extends Parent {
 ```
 - method overriding is there
 
-## `super` keyword:
+> ## `super` keyword:
 - the 'super' keyword is used to call the constructor of its parent class to access the parent's properties and methods.
 ```js
 super(args) // calls Parent's constructor
@@ -1118,32 +1118,87 @@ super.parentMethod(args)  // calls parentMethod which is defined in the parent
 
 
 # OOP key insights:
-## related to Classes:
+> ## related to Classes:
 - `constructor`: This is a special method that is automatically called when a new object is instantiated using new. It’s similar to the constructors in C++ or Python.
 - An instance's `.__proto__` (or `Object.getPrototypeOf(instance)`) points to the constructor's prototype obj. This prototype object contains methods but does not include instance-specific properties.
 > Nuances:
 - JavaScript doesn't have true classes like C++ or Java. Classes in JS are just functions under the hood and follow prototypal inheritance.
-- `this` behavior: Inside methods, this refers to the instance. Be mindful of losing the this context when passing class methods as callbacks or event listeners (more on that later).
-## related to Inheritance:
+- `this` behavior: Inside methods, this refers to the instance. Be mindful of losing the `this` context when passing class methods as callbacks or event listeners (more on that later).
+> ## related to Inheritance:
 - `extends`: Establishes inheritance.
 - `super()`: Calls the parent class constructor. Must be called before accessing this in the child constructor.
 - If no constructor is provided in the child class, JavaScript automatically calls `super()` with the same arguments as the parent constructor.
 >Nuances
 - Method Overriding: Child classes can override parent class methods, but calling super.methodName() allows access to the parent’s implementation.
 
+> ## getters and setters in js, to define controlled access
+- see the example in examples dir, dont spend too much time
+> ## Truly private fields for Stronger encapsulation:
+- Private fields and methods are prefixed with # and are truly inaccessible from outside the class.
+- they can only be accessed within the class using `this.#property` or `this.#method()` syntax
+- Unlike "pseudo-private" fields using underscores (_property), #privateFields cannot be accessed or modified from outside the class. This adds stronger encapsulation.
+
+```js
+class Car {
+  constructor(speed) {
+    this.#speed = speed;
+  }
+  #speed;
+
+  #explode = () => {
+    console.log('kaboom 💥');
+  }
+
+  accelerate() {
+    this.#speed += 10;
+    console.log(`Speed: ${this.#speed}`);
+    if(this.#speed > 35) {
+      this.#explode();
+    }
+  }
+}
+
+const myCar = new Car(5);
+myCar.accelerate();  // Output: Speed: 15
+myCar.accelerate();  // Output: Speed: 25
+myCar.accelerate();  // Output: Speed: 35
+myCar.accelerate();  // Output: Speed: 45, hence 💥
+// console.log(myCar.#speed);  // Error: Private field '#speed' must be declared in an enclosing class
+// Output:
+// Speed: 15
+// Speed: 25
+// Speed: 35
+// Speed: 45
+// kaboom 💥
+```
+> ## Static Methods & Properties
+- Static members are shared by all instances of the class, and they’re accessed on the class itself, not on individual objects.
+- use `static` keyword within the class definition
+```js
+class MathUtils {
+  static pi = 3.14159;
+
+  static calculateCircumference(radius) {
+    return 2 * MathUtils.pi * radius;
+  }
+}
+
+console.log(MathUtils.pi);  // Output: 3.14159
+console.log(MathUtils.calculateCircumference(5));  // Output: 31.4159
+```
+> key point(s):
+Static methods/properties are accessed via the class name, cannot be accessed via the instance.
 
 
 ![alt text](image-3.png)
 
-
-
-### Constructor Functions
+> ### Constructor Functions
 - In JavaScript, you can create objects using constructor functions (like `Fruit`).
 When called with `new`, the constructor function creates a new object, sets up `this` to refer to the new object, and assigns properties to it.
-### Prototype
+> ### Prototype
 - Every function in JavaScript has a special property called `prototype`, which is an object. This prototype is shared by all instances created by that function (like all `Fruit` objects).
 Properties or methods added to the prototype are shared by all instances, reducing memory usage (since the method is only stored once).
-### Prototypal Inheritance
+> ### Prototypal Inheritance
 - When an object accesses a property or method that it doesn't have, JavaScript looks up the prototype chain to find it.
 Objects in JavaScript inherit from other objects, not from classes, which is the essence of prototypal inheritance.
 
@@ -1169,9 +1224,9 @@ console.log(alice.__proto__ === Person.prototype);  // true
 console.log(Person.prototype.__proto__ === Object.prototype);  // true
 console.log(Object.prototype.__proto__ === null);  // true
 ```
-### ⭐️ This shows that alice's prototype is Person.prototype, which in turn inherits from Object.prototype. All objects in JavaScript ultimately inherit from Object.prototype.
+> ### ⭐️ This shows that alice's prototype is Person.prototype, which in turn inherits from Object.prototype. All objects in JavaScript ultimately inherit from Object.prototype.
 
-## Class based syntax:
+> ## Class based syntax:
 - In languages like C++, you define a class that represents a blueprint for objects. In JavaScript:
 
   - You can still use class-like syntax introduced in ES6, but it's just syntactic sugar over the prototype-based inheritance.
@@ -1190,16 +1245,16 @@ class Person {
 const alice = new Person('Alice');
 alice.sayHello();  // Hello, Alice
 ```
-## Advantages of Prototypal Inheritance
+> ## Advantages of Prototypal Inheritance
 - Memory efficiency: Methods like sayHello aren’t copied to each instance of Person (as they would be in class-based inheritance). Instead, all instances share the same method through the prototype.
 - Flexibility: You can dynamically add methods or properties to an object’s prototype even after instances have been created.
 
 # `prototype` vs `__proto__`
-## `prototype`
+> ## `prototype`
 - This is a property of the constructor function which is used to create objects of a class using the `new` keyword.
 - It serves as a blueprint to all objects created by this constructor, properties and methods added to ConstructorFunction.prototype are available to all objects of that constructor.
 
-## `__proto__`:
+> ## `__proto__`:
 - This is a property of the object instances which point to the prototype object of the constructor function which created this obj.
 
 
@@ -1220,5 +1275,5 @@ alice.sayHello();  // Hello, Alice
 
 
 # JS Tricks:
-## Integer division:
+> ## Integer division:
 > `(a/b >> 0)` or `(~~(a/b))` or `(a/b | 0)`
