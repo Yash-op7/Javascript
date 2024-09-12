@@ -7,7 +7,7 @@
     - > ### Functions as Objects: 
         - Functions in JavaScript are first-class citizens, meaning they can be assigned to variables, passed as arguments, and returned from other functions. This allows for powerful functional programming patterns.
     - > ### Closures:
-        - A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives a function access to its outer scope.
+        - A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives a function access to its outer scope, even after the outer function has finished executing.
         - This is a fundamental concept, especially for asynchronous programming.
 
 
