@@ -1,34 +1,13 @@
-const canWalk = {
-  walk() {
-    console.log(`${this.name} is walking`);
-  }
-};
+// var let const
 
-const canSwim = {
-  swim() {
-    console.log('Swimming');
-  }
-};
+let a = 5;
 
-// Factory function to create a person with composed abilities
-function createPerson(name) {
-  const person = { name };  // Create a base object with name property
-  return Object.assign(person, canWalk, canSwim);  // Mix in behaviors
+if(a < 5) {
+  var x = 10;
+} else {
+  var y = 20;
 }
 
-const bob = createPerson('Bob');
-bob.walk();  // Output: Walking
-bob.swim();  // Output: Swimming
-console.log(bob);
+print = (...x) => console.log(...x);
 
-class Person {
-  constructor(name) {
-    this.name = name;
-  }
-  walk() {
-    console.log(`${this.name} is walking (the Person class object)`);
-  }
-}
-const bob2 = new Person('bob');
-bob2.walk();
-console.log(bob2);
+print(y, y, x);

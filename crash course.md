@@ -68,10 +68,10 @@ for (let value of array) {
 > ## `var` v/s let or const, Basic difference:
 these are the two fundamentally basic differences:
 1. if you define a variable using let or const inside any if block, then it won't be available outside the block, but if you use var inside an if block, then it will be available everywhere inside the current function (by default we can consider the global scope as a main function of sorts)
-2. var is hoisted and initialized wth `undefined` and let/const are not hosited, they are not initialized and TDZ applies to them (Temporal Dead Zone, that is while they are hoisted they cannot be accessed or initialized before the declaration statement.) 
+2. var is hoisted and initialized wth `undefined` and let/const are not hosited, they are not initialized and TDZ applies to them (Temporal Dead Zone, that is they cannot be accessed or initialized before the declaration statement.) 
 
-Note:
-- avoid var, prefer let and const
+> Note:
+  - avoid var, prefer let and const
 - const objects and arrays can still have their contents modified.
 
 # data types
