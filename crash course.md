@@ -1380,6 +1380,29 @@ const bob = new Person('Bob');
 console.log(tom.eat === bob.eat);  // true
 ```
 
+# Object Composition (OOP Design Pattern)
+- Object Composition is a design pattern where you build complex objects by combining simple, reusable components or behaviors, instead of using class inheritance.
+- It emphasizes mixing behaviors instead of relying solely on an inheritance hierarchy.
+- Composition vs Inheritance:
+  - **Inheritance**: You reuse code by extending classes. However, this creates a rigid structure where a subclass is tightly coupled to its parent class.
+  - **Composition**: Instead of extending a base class, you create small, independent objects (often functions or behavior modules) and combine them to create more complex objects.
+- The `Object.assign()` method in JS is used for obj composition:
+  - The `Object.assign()` method in JavaScript is used to copy the enumerable properties from one or more source objects to a target object. It effectively merges properties of objects into a single object.
+  - 
+  ```js
+  Object.assign(target, ...sources);
+  ```
+  - Parameters:
+    - target (required):
+      - The object to which properties will be copied. It will be modified by the method, and the result will also be returned as the target.
+    - sources (one or more source objects):
+      - One or more source objects whose properties will be copied to the target. These properties are shallow copied, meaning only references to objects/arrays will be copied, not deep clones of nested objects.
+
+
+
+
+
+
 
 
 > ### Constructor Functions
