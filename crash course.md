@@ -1357,8 +1357,28 @@ setTimeout(() => tom.eat(), 1000);  // `this` will refer to `tom` because of the
 
 <hr>
 
+<h1>Think of the overall `this` concept as follows</h1>
+<span style='color:red;'>
+In JS OOP, class methods are shared between instances, meaning they are stored in a single place: the prototype object of the class. Each object instance doesn't store its own copy of the method. Instead, when an object invokes a method, it calls the shared reference from the prototype. The object that calls the method automatically passes itself as the this context, resulting in different output for different instances, even though they share the same method. This is a key aspect of JavaScript's prototype-based inheritance and ensures memory efficiency while maintaining object-specific behavior (which is the intended behavior in OOP).
+</span>
+<hr>
 
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
 
+  eat() {
+    console.log(`${this.name} is eating.`);
+  }
+}
+
+const tom = new Person('Tom');
+const bob = new Person('Bob');
+
+console.log(tom.eat === bob.eat);  // true
+```
 
 
 
