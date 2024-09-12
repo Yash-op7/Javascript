@@ -1,1 +1,3 @@
 - `$('video').playbackRate=2.7`
+- cmd + j - terminal
+- cmd + option + j - console

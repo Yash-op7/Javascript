@@ -1151,8 +1151,9 @@ tom.eat();
 
 setTimeout(tom.eat, 1000);
 ```
-> output: 
+
 ```
+> Output: 
 tom is eating.
 undefined is eating.
 ```
@@ -1163,14 +1164,35 @@ undefined is eating.
   - so when setTimeout calls the eat method after 1 second, its invoked without an object context, in this case the value of `this` is determined by the default binding which refers to:
     - in non-strict mode: the global object, which is the `window` object in web browsers and `global` in node.js, and the functino tries to access the name property on the global object resulting in undefined behavior.
     - in strict mode (here): `this` without context is `undefined`.
+## how to fix this:
+### 1. Use `.bind()`:
+You can explicitly bind the this context of the function to tom using .bind():
+```js
+setTimeout(tom.eat.bind(tom), 1000);
+```
+Now `this` is bound to `tom`
+
+Explanation:
+  - The `bind()` method creates a new function with the same body but with this permanently bound to the object you pass in (tom in this case). Now when the callback is executed, `this` will still refer to `tom`, and `this.name` will correctly refer to 'tom'.
+
+### 2. Using an arrow function:
+
+Another approach is to use an arrow function, which lexically captures the this value from the surrounding scope:
+```js
+setTimeout(() => tom.eat(), 1000);  // Works because the arrow function doesn't change `this`
+```
+Explanation:
+
+- Arrow functions don't have their own this; they inherit this from the surrounding scope. In this case, the this inside tom.eat() will still refer to tom, so it works as expected.
 
 
+## Summary:
+- When eat() is called directly as tom.eat(), this refers to the tom object.
+- When eat() is passed as a callback to setTimeout, it loses the reference to tom and defaults to the global object (or undefined in strict mode), causing the this context to no longer refer to tom.
+- To fix this, you can either use .bind() to bind this to tom explicitly or use an arrow function to preserve the this context.
 
 
-
-
-
-
+# Deep dive into `this` and "context"
 
 
 

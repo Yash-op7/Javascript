@@ -5,7 +5,7 @@ class Person {
     this.name = name;
   }
   eat() {
-    console.log(this);
+    // console.log(this);
     console.log(`${this.name} is eating.`);
   }
 }
@@ -13,4 +13,6 @@ class Person {
 const tom = new Person('tom');
 tom.eat();
 
-setTimeout(tom.eat, 1000);
+// setTimeout(tom.eat.bind(tom), 1000);
+
+
