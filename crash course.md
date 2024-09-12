@@ -1156,6 +1156,23 @@ setTimeout(tom.eat, 1000);
 tom is eating.
 undefined is eating.
 ```
+- in `tom.eat()`:
+  - the eat() method is called on the object, so inside the method `this` refers to the tom object.
+- in `setTimeout(tom.eat, 1000)`
+  - when `tom.eat` is passed as a callback, the function is detached from its original object.
+  - so when setTimeout calls the eat method after 1 second, its invoked without an object context, in this case the value of `this` is determined by the default binding which refers to:
+    - in non-strict mode: the global object, which is the `window` object in web browsers and `global` in node.js, and the functino tries to access the name property on the global object resulting in undefined behavior.
+    - in strict mode (here): `this` without context is `undefined`.
+
+
+
+
+
+
+
+
+
+
 
 
 

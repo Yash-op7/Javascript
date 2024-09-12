@@ -5,6 +5,7 @@ class Person {
     this.name = name;
   }
   eat() {
+    console.log(this);
     console.log(`${this.name} is eating.`);
   }
 }
