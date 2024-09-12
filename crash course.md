@@ -1194,9 +1194,168 @@ Explanation:
 
 # Deep dive into `this` and "context"
 
+## 1. What is "Context" and this?
+The context of a function in JavaScript refers to the object that the function is operating on when it's called. This object is represented by the `this` keyword.
 
+In simple terms:
 
+Context = the object that "owns" the function when it is invoked.
+`this` refers to that context.
+## 2. How is the this Context Determined?
+<span style="color:cyan;">The value of `this` depends on how a function is called, not where it’s defined.</span> Here's how it's determined in different situations:
 
+### 1. Calling a method on an object (Regular method call)
+If you call a method directly on an object, the this context will refer to that object.
+
+```js
+const tom = {
+  name: 'Tom',
+  eat() {
+    console.log(`${this.name} is eating.`);
+  }
+};
+
+tom.eat();  // `this` refers to `tom`, so `this.name` is `'Tom'`
+```
+> Here, `tom.eat()` is called as a method of the tom object. The this inside the eat function refers to tom, so this.name outputs 'Tom'.
+
+### 2. Standalone function call (No object)
+<span style="color:cyan;">
+When a function is not called as a method of an object, this defaults to the global object (or undefined in strict mode).
+</span>
+
+```js
+function eat() {
+  console.log(this);  // In non-strict mode, this refers to the global object (window in browsers)
+}
+
+eat();  // `this` refers to the global object
+```
+> If eat() is called without an object, this will point to the global object (window in browsers, global in Node.js). In strict mode, this would be undefined.
+
+### 3. Constructor function (new keyword)
+When a function is called as a constructor (using new), this refers to the newly created object.
+
+```js
+function Person(name) {
+  this.name = name;
+}
+
+const tom = new Person('Tom');
+console.log(tom.name);  // `this` refers to the new object `tom`
+```
+> Here, `this` inside the Person constructor refers to the new Person object that is created when using new.
+
+### 4. Explicit Binding (.bind(), .call(), .apply())
+You can explicitly bind the value of this using` .bind(), .call(), or .apply()`.
+> `.bind()` example
+```js
+"use strict";
+
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  eat() {
+    console.log(`${this.name} is eating.`);
+  }
+}
+
+const tom = new Person('tom');
+tom.eat();
+setTimeout(tom.eat.bind(tom), 1000);
+```
+> `.call()` example
+```js
+const tom = { name: 'Tom' };
+
+function eat() {
+  console.log(this.name);
+}
+
+eat.call(tom);  // `this` is explicitly set to `tom`, so it outputs 'Tom'
+```
+### 5. Arrow functions (Lexical this)
+**Arrow functions do not have their own this. Instead, they inherit this from the surrounding (lexical) scope.**
+
+```js
+const tom = {
+  name: 'Tom',
+  eat: () => {
+    console.log(this.name);  // `this` refers to the surrounding context (global object in this case)
+  }
+};
+
+tom.eat();  // Undefined or the global object because arrow functions don't have their own `this`
+```
+In the example above, this does not refer to tom because arrow functions use the this of the surrounding scope.
+
+## 3. Detaching the Function from the Object (Callback Case)
+Now, let's go back to your example:
+
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  eat() {
+    console.log(`${this.name} is eating.`);
+  }
+}
+
+const tom = new Person('Tom');
+tom.eat();  // Works fine, `this` is `tom`
+
+setTimeout(tom.eat, 1000);  // `this` is lost here
+```
+> Why is the this context lost when eat is passed to setTimeout?
+
+> When you pass tom.eat to setTimeout, **you are passing the function reference** but not the context (the this binding). The eat function is then executed by setTimeout without an object, so it runs as a standalone function.
+
+In other words:
+
+> When you do setTimeout(tom.eat, 1000), you’re not calling the function immediately; you're giving the function as a callback to be executed later. But when the function is invoked by setTimeout, there’s no object attached to it, so the this context defaults to the global object or undefined (in strict mode).
+In JavaScript, functions are first-class citizens, meaning they can be passed around just like any other value (e.g., variables). However, when a function is passed to another context (like setTimeout), it loses its binding to the original object unless explicitly handled.
+
+## 4. Is There Something Special About Callbacks?
+Yes, but not in the way you're thinking. The thing that "changes" the this context in callbacks isn't something unique to callbacks themselves but the way they are invoked.
+
+When you pass a method like tom.eat to a callback, you’re passing only the function — not the object. When the callback is later executed, there’s no object context (like tom) attached to it, so it defaults to the global object or undefined.
+
+```js
+setTimeout(tom.eat, 1000);  // Here, only the function reference is passed, not the context
+```
+> If you want to keep the this context intact, you need to explicitly bind the method to the object using` .bind()`, or use **an arrow function** to retain this from the surrounding lexical scope.
+
+## 5. Summary of How this Works in Different Situations:
+- Method Call (`tom.eat()`): 
+  - `this` refers to the object calling the method (tom in this case).
+- Standalone Function Call (`eat()`): 
+  - `this` refers to the global object (or undefined in strict mode).
+- Constructor Call (`new Person()`): 
+  - `this` refers to the new object being created.
+- Explicit Binding (`.bind()`, .call(), .apply()): 
+  - `this` is manually set to the specified object.
+- Arrow Function (`() => {}`): 
+  - `this` refers to the surrounding lexical context (the outer scope).
+- Callbacks don’t have anything inherently special about them, but when you pass a method like tom.eat as a callback, it gets invoked without an object context unless you explicitly bind the object or use an arrow function.
+
+## 6. Fixing the Callback this Issue
+To fix the loss of this in a callback, you have a few options:
+
+### 1. Use `.bind()`:
+
+```js
+setTimeout(tom.eat.bind(tom), 1000);  // `this` will now refer to `tom`
+```
+### 2. Use an Arrow Function:
+
+```js
+setTimeout(() => tom.eat(), 1000);  // `this` will refer to `tom` because of the lexical scoping
+```
+> Both approaches ensure that `this` retains its context when the eat method is eventually called.
+
+<hr>
 
 
 
