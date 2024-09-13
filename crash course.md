@@ -713,7 +713,7 @@ In Arrow Functions:
 
 - Arrow functions don’t have their own `this`; they inherit it from the surrounding scope (lexical `this`).
 
-⭐️ In strict mode, this in a standalone function is undefined.
+⭐️ In strict mode, `this` in a standalone function is undefined.
 
 # `try...catch...finally` Syntax
 ```js
@@ -735,7 +735,8 @@ try {
 ```
 # Advanced Operators:
 > ## Nullish Coalescing (??)
-- Returns the right-hand operand if the left-hand operand is null or undefined.
+- Returns the right-hand operand only if the left-hand operand is `null` or `undefined`.
+- Ternary triggers fallback for any falsy value, but `??` only triggers fallback for `null` or `undefined`. 
 
 ```js
 let x = null;
@@ -767,6 +768,7 @@ let greeting = isLoggedIn ? 'Welcome back!' : 'Please log in';
 # Other concepts:
 > ## Closures:
 A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope. This is a powerful concept often used in callbacks, asynchronous code, and function factories.
+- This allows functions to "remember" the environment in which they were created.
 ```js
 function outer() {
   let count = 0;
