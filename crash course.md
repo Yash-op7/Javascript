@@ -782,7 +782,8 @@ increment();  // 1
 increment();  // 2
 ```
 > ## Promises & Async/Await: 
-Promises and async/await are essential for working with asynchronous operations. You probably touched on this with the this context explanation, but it's good to be aware of how Promises and async/await manage asynchronous control flow.
+Promises and async/await are essential for working with asynchronous operations. 
+A promise represents the eventual completion (or failure) of an asynchronous operation and allows you to handle its result when it becomes available.
 ```js
 const fetchData = async () => {
   try {
@@ -794,6 +795,22 @@ const fetchData = async () => {
   }
 };
 ```
+## What Does `.then()` Do?
+The `.then()` method is used to specify what should happen once a promise is resolved (fulfilled). It takes a callback function that will be executed when the promise has successfully completed.
+It also allows chaining, which means you can attach multiple `.then()` methods in sequence. The result from one `.then()` is passed to the next.
+
+## Promise Chaining
+In a promise chain, each `.then()` method processes the result from the previous promise and <span style='color:red;'>can return a new promise or value.</span> If a `.then()` returns a promise, the next `.then()` in the chain will wait for that promise to resolve before proceeding.
+
+
+
+## Understanding `.then()` Behavior
+> ⭐️ When you chain ```.then()``` methods, the result of each ``.then()`` can be:
+
+- __A Value__: If you return a regular value (not a promise) from a `.then()` callback, <span style='color:red;'>that value is wrapped in a promise</span> and passed to the next `.then()` in the chain.
+- **A Promise**: If you return a promise, the next `.then()` in the chain will wait for that promise to resolve and then proceed with its callback.
+- `undefined`: If you return undefined, the next `.then()` in the chain will receive undefined as its input.
+
 > ## 3. Modules (ES6 Modules)
 ES6 modules allow you to split your code into multiple files and manage dependencies using import and export.
 
@@ -856,23 +873,22 @@ const newNums = [...nums, 4, 5];  // [1, 2, 3, 4, 5]
 ⭐️ const sum = (...args) => args.reduce((acc, val) => acc + val, 0);
 ```
 > ## Cool Tricks:
+## IIFE (Immediately Invoked Function Expression):
 ```js
--> IIFE (Immediately Invoked Function Expression):
-
 (function() {
   console.log('This runs immediately!');
 })();
-
+```
 Why it's useful: IIFEs are often used to create local scopes and avoid polluting the global namespace.
 
-
--> Short-circuit evaluation:
-
+## Short-circuit evaluation:
+```js
 const result = a || b;  // Returns `a` if it's truthy, otherwise returns `b`
 const valid = isUser && isAdmin;  // Returns `true` only if both conditions are true
+```
 
-
--> Default Parameters:
+## Default Parameters:
+```js
 You can set default parameter values in functions.
 
 function greet(name = 'Guest') {
@@ -881,20 +897,7 @@ function greet(name = 'Guest') {
 greet();  // Hello, Guest
 ```
 
-> ## `Array.prototype.flatMap()`
-- The flatMap() method maps each element using a mapping function and then flattens the result into a new array.
 
-Example:
-
-```javascript
-const arr = [1, 2, 3];
-
-// Map each number to an array of its number and its square, then flatten the result
-const result = arr.flatMap(num => [num, num * num]);
-
-console.log(result); // Output: [1, 1, 2, 4, 3, 9]
-```
-- Explanation: `flatMap(callbackFn)` applies `callbackFn` to each element and flattens the result by one level.
 
 
 # Building Foundations: Asynchronous JS
@@ -1101,10 +1104,10 @@ super.parentMethod(args)  // calls parentMethod which is defined in the parent
 - An instance's `.__proto__` (or `Object.getPrototypeOf(instance)`) points to the constructor's prototype obj. This prototype object contains methods but does not include instance-specific properties.
 > Nuances:
 - JavaScript doesn't have true classes like C++ or Java. Classes in JS are just functions under the hood and follow prototypal inheritance.
-- `this` behavior: Inside methods, this refers to the instance. Be mindful of losing the `this` context when passing class methods as callbacks or event listeners (more on that later).
+- `this` behavior: Inside methods, `this` refers to the instance. Be mindful of losing the `this` context when passing class methods as callbacks or event listeners (more on that later).
 > ## related to Inheritance:
 - `extends`: Establishes inheritance.
-- `super()`: Calls the parent class constructor. Must be called before accessing this in the child constructor.
+- `super()`: Calls the parent class constructor. Must be called before accessing `this` in the child constructor.
 - If no constructor is provided in the child class, JavaScript automatically calls `super()` with the same arguments as the parent constructor.
 >Nuances
 - Method Overriding: Child classes can override parent class methods, but calling super.methodName() allows access to the parent’s implementation.
