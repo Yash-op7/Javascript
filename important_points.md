@@ -2,3 +2,4 @@
 ```js
 ClassName.prototype.myMethod = function () {}
 ```
+> let parsed = Number('123');

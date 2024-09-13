@@ -1,3 +1,6 @@
-let fruits = Array.of("Banana", "Orange", "Apple", "Mango");
+const a = [1, 2, 3, [43], 5];
+const b = a.slice(1, 4);
 
-console.log(fruits);
+b[2][0] = 54;
+
+console.log(a, b);

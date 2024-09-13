@@ -323,12 +323,15 @@ const newArr = myArr.flat();
 ``` 
 > Warning !
 Using `delete()` leaves undefined holes in the array.
+ `delete fruits[0]` -> will cause fruits[0] to become undefined.
+> > Use `pop()` or `shift()` instead.
 
-Use `pop()` or `shift()` instead.
 > Note
 The `concat()` method does not change the existing arrays. It always returns a new array.
 
 The `concat()` method can take any number of array arguments.
+
+> The `splice()` method returns an array with the deleted items:
 
 ```js
 const fruits = ["Banana", "Orange", "Apple", "Mango"];
@@ -339,10 +342,9 @@ const months = ["Jan", "Feb", "Mar", "Apr"];
 const spliced = months.toSpliced(0, 1);   // same as splice but doesn't modify original
 
 const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
-const citrus = fruits.slice(1);   // The slice() method slices out a piece of an array into a new array
+const citrus = fruits.slice(1);   // The slice() method slices out a piece of an array into a new array, shallow copy
 
 ```
-> The `splice()` method returns an array with the deleted items:
 
 > All JavaScript objects have a toString() method.
 > JavaScript automatically converts an array to a comma separated string when a primitive value is expected.
@@ -374,8 +376,10 @@ console.log(list);
 ### `toSorted()`	Sorts the elements of an array (to a new array)
 ### `toSpliced()`	Adds or Removes array elements (to a new array)
 
-
 # Useful methods:
+
+
+
 > ## Array Methods:
 > ### 1. `forEach()`
 ```js
