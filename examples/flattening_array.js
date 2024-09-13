@@ -15,6 +15,5 @@ flatten = (list) => {
 }
 
 const a  =[1, 2];
-const  b = [1, [1, 2]];
-console.log(flatten(a));
+const  b = [1, [1, 2], a, [[[3, 2],[4],[[[5, [[6]]]]]]]];
 console.log(flatten(b));
