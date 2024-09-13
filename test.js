@@ -1,6 +1,14 @@
-const a = [1, 2, 3, [43], 5];
-const b = a.slice(1, 4);
+const map = new Map();
+const arr = [1, 2, 3, 5];
+map.set(arr, 2);
+arr.push(31);
+map.set('name', 'Alice');
+map.set(1, 'one');  // Keys can be numbers
+const arr2 = [...arr];
+map.set(arr2, 3);
+console.log('test', map.get([...arr]));  // Alice
 
-b[2][0] = 54;
+for (let x of map) {
+    console.log(x);
+}
 
-console.log(a, b);

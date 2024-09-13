@@ -348,7 +348,7 @@ const citrus = fruits.slice(1);   // The slice() method slices out a piece of an
 
 > All JavaScript objects have a toString() method.
 > JavaScript automatically converts an array to a comma separated string when a primitive value is expected.
-
+(for example in console.log or in dom innerHTML assignments)
 ```js
 // Create an Array
 const fruits = ["Banana", "Orange", "Apple", "Mango"];
@@ -381,22 +381,22 @@ console.log(list);
 
 
 > ## Array Methods:
-> ### 1. `forEach()`
+> ### 1. `forEach()` - performs some action for each value, doesn't return anything
 ```js
 [1, 2, 3].forEach(num => console.log(num));
 // Output: 1 2 3
 ```
-> ### 2. `map()`:
+> ### 2. `map()`: maps each value through a function and returns a new array
 ```js
 const doubled = [1, 2, 3].map(num => num * 2);
 console.log(doubled);  // [2, 4, 6]
 ```
-> ### 3. `ƒilter()`:
+> ### 3. `ƒilter(boolean_function)`: maps each value through a boolean function and returns a new array
 ```js
 const evens = [1, 2, 3, 4].filter(num => num % 2 === 0);
 console.log(evens);  // [2, 4]
 ```
-> ### 4. `reduce()`:
+> ### 4. `reduce(binary_function(acc, x), acc=0)`: accumulates each value using a binary function and returns the value, which could be anything
 ```js
 const sum = [1, 2, 3].reduce((acc, num) => acc + num, 0);
 console.log(sum);  // 6
@@ -404,51 +404,52 @@ console.log(sum);  // 6
 Also `reduceRight()`: The reduceRight() method processes the array from right to left, accumulating a result. Could be useful in finding the minimum value from right or from left or something like that `¯\_(ツ)_/¯`
 
 
-> ### 5. `find()`: Returns the first element that satisfies a condition.
+> ### 5. `find(boolean_function)`: tests each value through a boolean function and returns the value, undefined otherwise
 
 ```js
 const result = [1, 2, 3].find(num => num > 1);
 console.log(result);  // 2
 ```
 
-> ### 6. `findIndex() `:
+> ### 6. `findIndex(boolean_function) `: tests each value through a boolean function and returns the index, -1 otherwise
 ```js
 const index = [1, 2, 3].findIndex(num => num > 1);
 console.log(index);  // 1
 ```
 
-> ### 7. `some()`:
+> ### 7. `some(boolean_function)`: returns a boolean showing if at least one value returns true to a boolean function
 ```js
 const hasEven = [1, 3, 5].some(num => num % 2 === 0);
 console.log(hasEven);  // false
 ```
-> ### 8. `every()`:
+> ### 8. `every(boolean_function)`: returns a boolean showing if all values return true to a boolean function
 ```js
 const allPositive = [1, 2, 3].every(num => num > 0);
 console.log(allPositive);  // true
 ```
-> ### 9. `includes()`:
+> ### 9. `includes(value)`:
 ```js
 const hasTwo = [1, 2, 3].includes(2);
 console.log(hasTwo);  // true
 ```
-> ### 10. `concats()`: join two or more arrays
+> ### 10. `concats(another_array or a list of values)`: join two or more arrays
 ```js
 const combined = [1, 2].concat([3, 4]);
 console.log(combined);  // [1, 2, 3, 4]
+const combined = [1, 2].concat(5, 6, 'banana');
 ```
 
 > ### 11. `slice()`: Returns a shallow copy of a portion of the array (non-destructive).
 - In JS, the terms destructive and non-destructive are used to describe whether a method or operation modifies the original data structure (like an array) or not.
 - Destructive (Mutating) Methods and Non-Destructive (Non-Mutating) Methods
-- Destructive methods modify the original array directly.
-- Non-destructive methods do not alter the original array but instead return a new array or value.
+  - Destructive methods modify the original array directly.
+  - Non-destructive methods do not alter the original array but instead return a new array or value.
 ```js
 const part = [1, 2, 3, 4].slice(1, 3);
 console.log(part);  // [2, 3]
 ```
 > ### 12. `splice()`: Adds/removes elements from an array (destructive).
-`splice(startIndex, deleteCount, item1, item2, ...)`
+`splice(startIndex, deleteCount, newItem1, newItem2, ...)`
 ```js
 const arr = [1, 2, 4, 5];
 
@@ -462,8 +463,8 @@ const arr = [1, 2, 3];
 arr.splice(1, 1);  // Removes one element at index 1
 console.log(arr);  // [1, 3]
 ```
-> ### 13. `sort()`: sorts the array *inplace* ⭐️
-- Comparison Function: The function provided to sort() should return a negative number if the first argument should come before the second, a positive number if the second should come before the first, and 0 if they are equal.
+> ### 13. `sort(binary_function)`: sorts the array *inplace* ⭐️
+- Comparison Function: A binary function to calculate score for ranking elements is provided to sort() which should return a negative number if the first argument should come before the second, a positive number if the second should come before the first, and 0 if they are equal.
 - In-Place Sorting: The sort() method sorts the array in place and returns the sorted array.
 - Stability: JavaScript’s Array.prototype.sort() is stable in modern engines, meaning it maintains the relative order of elements with equal sort keys.
 
@@ -481,6 +482,7 @@ let listOfTuples = [
 
 // Function to calculate the average of a tuple
 function calculateAverage(tuple) {
+  if(tuple.length == 0) return 0;
   const sum = tuple.reduce((acc, value) => acc + value, 0);
   return sum / tuple.length;
 }
@@ -511,68 +513,69 @@ console.log(arr);  // [3, 2, 1]
 
 
 > ## `String` Methods:
+in the below definitions, `s` is a string variable.
+- `s.split(seperator)`
 ```js
-
-// split()
 // Splits a string into an array of substrings.
 const parts = 'a,b,c'.split(',');
 console.log(parts);  // ['a', 'b', 'c']
-
-// join()
+```
+- `array.join(delimiter)`
+```js
 // Joins all array elements into a string.
 const str = ['a', 'b', 'c'].join('-');
 console.log(str);  // 'a-b-c'
 
-// toUpperCase()
+// s.toUpperCase()
 // Converts a string to uppercase.
 console.log('hello'.toUpperCase());  // 'HELLO'
 
-// toLowerCase()
+// s.toLowerCase()
 // Converts a string to lowercase.
 console.log('HELLO'.toLowerCase());  // 'hello'
 
-// trim()
+// s.trim()
 // Removes whitespace from both sides of a string.
 console.log('  hello  '.trim());  // 'hello'
-
-// replace()
+```
+- `s.replace(old_substring, new_substring)`
+```js
 // Replaces occurrences of a substring.
 const str = 'Hello, World!'.replace('World', 'JS');
 console.log(str);  // 'Hello, JS!'
-
-// substring()
+```
+- `s.substring(start_idx, end_idx)` - end index is excluded as always
+```js
 // Returns a portion of the string.
 const str = 'abcdef';
 console.log(str.substring(1, 4));  // 'bcd'
 
-// charAt()
+// s.charAt(idx)
 // Returns the character at the specified index.
 console.log('hello'.charAt(1));  // 'e'
 
-// startsWith() & endsWith()
+// s.startsWith(substr) & s.endsWith(substr)
 // Checks if a string starts or ends with a specific substring.
 console.log('hello'.startsWith('he'));  // true
 console.log('hello'.endsWith('lo'));  // true
 ```
 > ## `Object` Methods:
+- `Object.freeze(input_obj)` - returns a frozen object with a fixed value of `input_obj`
 ```js
-
-// Object.freeze()
-// Freezes an object, preventing modifications.
+// Freezes an object, preventing modifications. basically ignores modifications.
 
 const obj = Object.freeze({ a: 1 });
 obj.a = 2;  // No effect, object is frozen
 ```
 
 > ## Misc. Methods/Functions:
+- `setTimeout(callback_function, delay)`
 ```js
--> setTimeout()
 // Executes a function after a specified delay.
-
 setTimeout(() => console.log('Hello'), 1000);  // Executes after 1 second
 
 
--> setInterval()
+-> setInterval(periodic_callback_func, interval_duration) -> intervalId
 // Repeatedly calls a function at specified intervals.
 
 const intervalId = setInterval(() => console.log('Tick'), 1000);
@@ -602,25 +605,7 @@ const floatNum = parseFloat('3.14');
   console.log(Math.floor(4.9));  // 4
   console.log(Math.ceil(4.1));   // 5
   console.log(Math.round(4.5));  //
-```
 
-
-
-
-
-
-```
-
-
-
-
-
-
-
-
-
-
-```js
 // stoi
 let parsed = Number('43.21');
 
@@ -628,6 +613,7 @@ let parsed = Number('43.21');
 let x = 2.35
 print(typeof x.toString())
 ```
+
 
 # Mutability
 - Primitive Data Types (e.g., Number, String, Boolean, null, undefined, Symbol, BigInt) are immutable. This means their values cannot be changed after assignment.
@@ -646,6 +632,9 @@ obj.name = "Bob";  // Object is mutable, properties can be changed
 
 # Data Structures:
 > ## `Set`:
+- collection of unique values
+- maintains insertion order
+- can be iterated, using `for (let value of set)`
 ```js
 const set = new Set([1, 2, 3]);
 set.add(3);  // No effect, duplicates not allowed
@@ -657,8 +646,13 @@ console.log(set.has(1));  // true
 - `has(value)`: Checks if a value exists.
 -`size`: Returns the number of elements.
 - `clear()`: Removes all elements.
+- `.size`: get the number of elements
 
 > ## `Map`:
+- a collection of key-value pairs
+- maintains insertion order
+- Keys in a `Map` can be of any data type, including objects, primitives, or functions. This is different from objects, where keys are always strings (or symbols).
+
 ```js
 const map = new Map();
 map.set('name', 'Alice');

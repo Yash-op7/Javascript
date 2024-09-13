@@ -2,4 +2,11 @@
 ```js
 ClassName.prototype.myMethod = function () {}
 ```
-> let parsed = Number('123');
+> ways to check type of number:
+```js
+let parsed = Number('123');
+const a = 54;
+
+console.log(typeof a);
+console.log(Number.isInteger(a))
+```
