@@ -1,11 +1,3 @@
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
-fruits.shift();
-fruits.unshift("Lemon");
-fruits[fruits.length] = "Kiwi";
-delete fruits[0];
-const drinks = ['Milk', 'Coffee', 'Water'];
+let fruits = Array.of("Banana", "Orange", "Apple", "Mango");
 
 console.log(fruits);
-console.log(fruits.concat(drinks));
-console.log(fruits.concat("Strawberry"));
-

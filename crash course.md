@@ -308,13 +308,18 @@ let isFalse = false;
 ## operations:
 ```js
 const fruits = ["Banana", "Orange", "Apple", "Mango"];
-fruits.shift();
-fruits.unshift("Lemon");
-fruits[fruits.length] = "Kiwi";
-delete fruits[0];   // see warning below
-
+fruits.shift();                 // shift elements to the left, so popping the first value
+fruits.unshift("Lemon");        // add to the beginning and shift everything to the right
+fruits[fruits.length] = "Kiwi"; // trick to append a value in place
+delete fruits[0];       // delete the value, make it undefined
+const drinks = ['Milk', 'Coffee', 'Water'];
 
 console.log(fruits);
+console.log(fruits.concat(drinks)); // concatenate another arr but doesn't modify original
+// console.log(fruits.concat("Strawberry"));    // .concat() call also take literal values as args
+
+const myArr = [[1,2],[3,4],[5,6]];
+const newArr = myArr.flat();   
 ``` 
 > Warning !
 Using `delete()` leaves undefined holes in the array.
@@ -325,8 +330,49 @@ The `concat()` method does not change the existing arrays. It always returns a n
 
 The `concat()` method can take any number of array arguments.
 
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+console.log(fruits.splice(2, 1, "Lemon", "Kiwi"));
+console.log(fruits);
 
+const months = ["Jan", "Feb", "Mar", "Apr"];
+const spliced = months.toSpliced(0, 1);   // same as splice but doesn't modify original
 
+const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+const citrus = fruits.slice(1);   // The slice() method slices out a piece of an array into a new array
+
+```
+> The `splice()` method returns an array with the deleted items:
+
+> All JavaScript objects have a toString() method.
+> JavaScript automatically converts an array to a comma separated string when a primitive value is expected.
+
+```js
+// Create an Array
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+// Create an Iterator and use the .next() method, not a good practice to save an iterator as using .next() has an irreversible effect.
+const list = fruits.entries();
+let text = list.next().value + " " + list.next().value;
+
+// List the Entries
+for (let [i, v] of fruits.entries()) {
+    console.log(i,v);
+}
+
+// instead of doing: for (let i = 0; i < fruits.length; i++), you can do this ⭐️
+for (let x of fruits.keys()) {
+    console.log(x);
+}
+console.log(list);
+```
+### `array.fill(value, start, end)` - fill the arr with a static value
+
+### `Array.isArray(obj) -> boolean`
+### `Array.of(element1, element2, ... , elementN) -> new array`
+### `toReversed()`	Reverses the order of array elements (to a new array)
+### `toSorted()`	Sorts the elements of an array (to a new array)
+### `toSpliced()`	Adds or Removes array elements (to a new array)
 
 
 # Useful methods:
