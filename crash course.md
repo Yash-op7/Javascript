@@ -301,6 +301,33 @@ let isTrue = true;
 let isFalse = false;
 ```
 
+# Array
+- store an ordered list of multiple items under a single variable name
+- Array objects
+- array-copy ops create shallow copies
+## operations:
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.shift();
+fruits.unshift("Lemon");
+fruits[fruits.length] = "Kiwi";
+delete fruits[0];   // see warning below
+
+
+console.log(fruits);
+``` 
+> Warning !
+Using `delete()` leaves undefined holes in the array.
+
+Use `pop()` or `shift()` instead.
+> Note
+The `concat()` method does not change the existing arrays. It always returns a new array.
+
+The `concat()` method can take any number of array arguments.
+
+
+
+
 
 # Useful methods:
 > ## Array Methods:
@@ -334,11 +361,12 @@ const result = [1, 2, 3].find(num => num > 1);
 console.log(result);  // 2
 ```
 
-> ### 6. `findIndex()`:
+> ### 6. `findIndex() `:
 ```js
 const index = [1, 2, 3].findIndex(num => num > 1);
 console.log(index);  // 1
 ```
+
 > ### 7. `some()`:
 ```js
 const hasEven = [1, 3, 5].some(num => num % 2 === 0);
@@ -426,6 +454,11 @@ const arr = [1, 2, 3];
 arr.reverse();
 console.log(arr);  // [3, 2, 1]
 ```
+> ### 15. `push(x)` -> push element x at the end and returns the new array length.
+> ### 15. `pop()` -> pop the last element and return it.
+> ### `toString()` -> converts an array to a string of comma seperated array values.
+> ### `toString()` -> converts an array to a string of comma seperated array values.
+
 
 > ## `String` Methods:
 ```js

@@ -10,4 +10,6 @@ for idx, val in enumerate(arr):
     print(idx, val)
 x, y = 10, 20
 print(f'{x = } and {y = }')     # x = 10 and y = 20
-5. All ways to write functions, function parameters, default parameters, args and kwargs similar to python  
+5. All ways to write functions, function parameters, default parameters, args and kwargs similar to python 
+6. Similar to python dict, are there methods like
+dict1.get(key, default)
