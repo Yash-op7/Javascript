@@ -10,3 +10,4 @@ const a = 54;
 console.log(typeof a);
 console.log(Number.isInteger(a))
 ```
+> always use .get and .set methods with Map() in js

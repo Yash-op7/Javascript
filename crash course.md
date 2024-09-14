@@ -873,6 +873,23 @@ const newNums = [...nums, 4, 5];  // [1, 2, 3, 4, 5]
 ⭐️ const sum = (...args) => args.reduce((acc, val) => acc + val, 0);
 ```
 > ## Cool Tricks:
+## Integer Division:
+```js
+-100/3             // -33.33..., 0.3663 millisec
+Math.floor(-100/3) // -34,       0.5016 millisec
+~~(-100/3)         // -33,       0.3619 millisec
+(-100/3>>0)        // -33,       0.3632 millisec
+(-100/3|0)         // -33,       0.3856 millisec
+(-100-(-100%3))/3  // -33,       0.3591 millisec
+
+/* a=-100, b=3 */
+a/b                // -33.33..., 0.4863 millisec
+Math.floor(a/b)    // -34,       0.6019 millisec
+~~(a/b)            // -33,       0.5148 millisec
+(a/b>>0)           // -33,       0.5048 millisec
+(a/b|0)            // -33,       0.5078 millisec
+(a-(a%b))/b        // -33,       0.6649 millisec
+```
 ## IIFE (Immediately Invoked Function Expression):
 ```js
 (function() {
