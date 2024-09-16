@@ -1644,3 +1644,24 @@ alice.sayHello();  // Hello, Alice
 # JS Tricks:
 > ## Integer division:
 > `(a/b >> 0)` or `(~~(a/b))` or `(a/b | 0)`
+
+
+# DOM - 14 useful methods
+## 1. Adding elements to the page - `append(string1, string2, node)` and `appendChild(node)`
+```js
+const body = document.body;
+body.append('hello world');
+
+body.appendChild()
+```
+
+## 2. `createElement()`
+- `const div1 = document.createElement('div');`
+- this just creates the element, we haven't added it yet, so do this:
+- `body.append(div1)`
+
+## 3. modifying element text: `element.innerText = 'hello'` and `element.textContent='hello'`
+
+# DOM 2
+document.body.childNodes - array of all elements
+- `document.getElementByID('id')`

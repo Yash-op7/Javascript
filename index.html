@@ -6,24 +6,15 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Days as a 🗿</h1>
-    <ul id="id1">
-      <li>
-        <input type="checkbox" id="item1" onchange="
-            const element = document.getElementById('id1');
-            let current_day = 2;
-            const newHtml = `
-            <li><input type='checkbox'> day${current_day}</input></li>
-            `;
-            element.innerHTML += newHtml;
-            "/>
-        <label for="item1"> 
-            day1
-        </label>
-      </li>
-
-    </ul>
-
-    <script src="test.js"></script>
+    
+    <p id="text">First paragraph</p>
+    <p id="text">Second paragraph</p>
+    
+    <script>
+      const paragraphs = document.getElementsByName('p');
+      console.log(paragraphs); // Logs a collection of p elements
+    </script>
+    
+    <script src="domManipulation.js"></script>
   </body>
 </html>
