@@ -60,3 +60,5 @@ test('Properly clones array', () => {
 this passes because:
 1. we are expecting the clonedArray to not to be the same array as our original, that is the same address in memory.
 2. and we check values to be equal
+
+- for more details on the test results use: `npm jest --coverage`, this logs the extent to which each code file was successfully tested and it also generates a coverage report in the form of an index.html file.
