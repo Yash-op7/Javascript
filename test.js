@@ -1,21 +1,26 @@
-"use strict";
+// "use strict";
 
-function Fruit() {
-  this.color = 'red';
-  this.greet = function() {
-    console.log('greetings');
-  }
-}
+// function Fruit() {
+//   this.color = 'red';
+//   this.greet = function() {
+//     console.log('greetings');
+//   }
+// }
 
-Fruit.prototype.info = function() {
-  console.log(`This fruit is ${this.color}.`);
-}
+// Fruit.prototype.info = function() {
+//   console.log(`This fruit is ${this.color}.`);
+// }
 
-const apple = new Fruit();
+// const apple = new Fruit();
 
-console.log(apple);
+// console.log(apple);
 
-apple.info();
-apple.greet();
+// apple.info();
+// apple.greet();
 
-console.log(typeof Fruit)
+// console.log(typeof Fruit)
+
+  "use strict"
+  x = 30;
+  console.log(x)
+  var x = 20;

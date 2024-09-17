@@ -60,6 +60,12 @@ for (let value of array) {
 > ## `var`
 - function-scoped: if its defined anywhere in the global space, then it is immediately hoisted and is available everywhere in the global scope, otherwise if its defined in a function then its only accessible within that function
 - hoisted, meaning you can use them before the declaration line, but they are initialized to `undefined`
+```js
+"use strict"
+x = 30;
+console.log(x)
+var x = 20;
+```
 
 > ## `let`
 - block scoped, not accessable outside the block
@@ -1642,6 +1648,8 @@ alice.sayHello();  // Hello, Alice
 
 
 # JS Tricks:
+- ## `Object.entries(obj)`, `Object.keys(obj)` and `Object.values(obj)`
+  - converts the obj into an array
 > ## Integer division:
 > `(a/b >> 0)` or `(~~(a/b))` or `(a/b | 0)`
 
