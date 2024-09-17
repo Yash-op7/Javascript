@@ -20,7 +20,3 @@
 
 // console.log(typeof Fruit)
 
-  "use strict"
-  x = 30;
-  console.log(x)
-  var x = 20;
