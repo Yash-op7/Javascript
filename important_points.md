@@ -13,4 +13,5 @@ console.log(Number.isInteger(a))
 > always use .get and .set methods with Map() in js
 - Number.MAX_SAFE_INTEGER
 - In JavaScript, functions are first-class objects,. Functions themselves are not a distinct data type; rather, they are a special type of object.
+- `parseInt('str')` & `parseFloat('2.3')`
 

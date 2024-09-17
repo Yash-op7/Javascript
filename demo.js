@@ -1,6 +1,5 @@
-"use strict";
-class Fruit {
+"use strict"
 
-}
-let x = new Fruit();
-console.log(typeof x, typeof Fruit, typeof console.log)
+let s = 'today is not wednesday as its tuesday.';
+
+console.log(s.replaceAll('day', '000'));

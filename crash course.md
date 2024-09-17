@@ -402,7 +402,7 @@ console.log(doubled);  // [2, 4, 6]
 const evens = [1, 2, 3, 4].filter(num => num % 2 === 0);
 console.log(evens);  // [2, 4]
 ```
-> ### 4. `reduce(binary_function(acc, x), acc=0)`: accumulates each value using a binary function and returns the value, which could be anything
+> ### 4. `reduce(binary_function(acc, x), acc=0)`: accumulates each value using a binary function and returns the value of `acc`, which could be anything
 ```js
 const sum = [1, 2, 3].reduce((acc, num) => acc + num, 0);
 console.log(sum);  // 6
@@ -438,7 +438,7 @@ console.log(allPositive);  // true
 const hasTwo = [1, 2, 3].includes(2);
 console.log(hasTwo);  // true
 ```
-> ### 10. `concats(another_array or a list of values)`: join two or more arrays
+> ### 10. `concat(another_array or a list of values)`: join two or more arrays
 ```js
 const combined = [1, 2].concat([3, 4]);
 console.log(combined);  // [1, 2, 3, 4]
@@ -544,9 +544,9 @@ console.log('HELLO'.toLowerCase());  // 'hello'
 // Removes whitespace from both sides of a string.
 console.log('  hello  '.trim());  // 'hello'
 ```
-- `s.replace(old_substring, new_substring)`
+- `s.replace(old_substring, new_substring)` & `s.replaceAll(old_str, new_str)`
 ```js
-// Replaces occurrences of a substring.
+// Replaces the first occurrence of a substring.
 const str = 'Hello, World!'.replace('World', 'JS');
 console.log(str);  // 'Hello, JS!'
 ```
@@ -565,6 +565,14 @@ console.log('hello'.charAt(1));  // 'e'
 console.log('hello'.startsWith('he'));  // true
 console.log('hello'.endsWith('lo'));  // true
 ```
+- ### `s.charCodeAt(index)` - returns the ascii value
+```js
+let str = 'Hello';
+let index = 1; // Index of the character 'e'
+let asciiValue = str.charCodeAt(index);
+console.log(asciiValue); // 101
+```
+
 > ## `Object` Methods:
 - `Object.freeze(input_obj)` - returns a frozen object with a fixed value of `input_obj`
 ```js
@@ -573,6 +581,9 @@ console.log('hello'.endsWith('lo'));  // true
 const obj = Object.freeze({ a: 1 });
 obj.a = 2;  // No effect, object is frozen
 ```
+- `Object.keys(obj)` similarly `.entries()` and `.values()`
+- `Object.assign(target, ...sources)`
+- 
 
 > ## Misc. Methods/Functions:
 - `setTimeout(callback_function, delay)`
