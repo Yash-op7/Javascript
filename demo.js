@@ -1,5 +1,10 @@
-"use strict"
+const resolveBtn = document.getElementById('resolve-btn');
+const rejectBtn = document.getElementById('reject-btn');
 
-let s = 'today is not wednesday as its tuesday.';
+const p = new Promise((res, rej) => {
+    resolveBtn.addEventListener('click', () => res('promise resolved'));
+    rejectBtn.addEventListener('click', () => res('promise rejected'));
+});
 
-console.log(s.replaceAll('day', '000'));
+
+p().then((msg) => console.log(msg)).catch((msg) => console.log(msg));
