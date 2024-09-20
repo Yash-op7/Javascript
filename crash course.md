@@ -1703,3 +1703,14 @@ console.log(Number.isInteger(a))
 - In JavaScript, functions are first-class objects,. Functions themselves are not a distinct data type; rather, they are a special type of object.
 - `parseInt('str')` & `parseFloat('2.3')`
 
+## pass by value and ref:
+- primitive types are always passed by value
+- primitive types include: Number
+String
+Boolean
+null
+undefined
+Symbol
+BigInt
+- non primitive types are always passed by ref
+- non primitive types include: Arrays, Objects and Functions.

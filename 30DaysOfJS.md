@@ -1,7 +1,7 @@
 questions to revisit:
 1. [2704. To Be Or Not To Be](https://leetcode.com/problems/to-be-or-not-to-be/description/?envType=study-plan-v2&envId=30-days-of-javascript)
 2. https://leetcode.com/problems/counter-ii/description/?envType=study-plan-v2&envId=30-days-of-javascript
-3.
+3. https://leetcode.com/problems/function-composition/?envType=study-plan-v2&envId=30-days-of-javascript
 
 
 mistakes made:
@@ -43,3 +43,6 @@ var createCounter = function(init) {
  */
 ```
 - cannot use = operator to assign values inside an object.
+
+# important points to remember:
+- arr.map((val, index) => ...);
