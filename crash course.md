@@ -1714,3 +1714,84 @@ Symbol
 BigInt
 - non primitive types are always passed by ref
 - non primitive types include: Arrays, Objects and Functions.
+- Functions are reference types, but reassigning the function within another function doesn’t modify the original function because only the reference inside the function scope is changed.
+- to modify reference types in functions, we need objects or arrays so that their contents can be modified, so if we want to modify a function then simply wrap it in an object and pass it.
+- same goes for achieving the functionality of passing primitive types to a function with an intent to reflect the changes in their value within the function, simply wrap the primitive type in an obj and pass it.
+
+- const in JavaScript prevents reassignment of a reference but does not make the object or array immutable. You can still modify the contents unless the object is frozen with `Object.freeze()`.
+
+# `lodash` a powerful js utility library:
+- Lodash provides powerful utility functions like `_.cloneDeep()`, `_.isEqual()`, and `_.merge()` to work with data structures efficiently.
+## 1. `_.cloneDeep()`
+Creates a deep copy of a value, which is useful when you need to clone objects or arrays that may contain nested structures (like objects within objects or arrays within arrays).
+```js
+const deepCopy = _.cloneDeep(obj);
+```
+## 2. _.isEqual()
+Performs a deep comparison between two values to determine if they are equivalent.
+```js
+const obj1 = { a: 1, b: { c: 2 } };
+const obj2 = { a: 1, b: { c: 2 } };
+
+console.log(_.isEqual(obj1, obj2)); // true
+```
+
+## 3. `_.get()`
+Safely retrieves the value at a given path from an object, returning undefined if the path doesn't exist.
+```js
+const obj = { a: { b: { c: 3 } } };
+console.log(_.get(obj, 'a.b.c')); // 3
+console.log(_.get(obj, 'a.x.y')); // undefined
+```
+## 4. _.set()
+Sets the value at a specific path in an object, creating intermediate properties if they don't exist.
+```js
+const obj = {};
+_.set(obj, 'a.b.c', 5);
+console.log(obj); // { a: { b: { c: 5 } } }
+```
+## 5. `_.merge()`
+Recursively merges properties of source objects into the destination object.
+
+```js
+const obj1 = { a: 1, b: { c: 2 } };
+const obj2 = { b: { d: 3 }, e: 4 };
+
+_.merge(obj1, obj2);
+console.log(obj1); // { a: 1, b: { c: 2, d: 3 }, e: 4 }
+```
+
+### Shallow Copy vs. Deep Copy:
+- Shallow copy only copies the first level of the object or array
+- Deep copy creates a completely independent copy at all levels.
+- 2 ways:
+## 1. Using Lodash's `_.cloneDeep()`:
+Lodash's _.cloneDeep() is the most convenient way to perform a deep copy.
+
+```js
+const obj = { a: 1, b: { c: 2 } };
+const deepCopy = _.cloneDeep(obj);
+deepCopy.b.c = 10;
+
+console.log(obj.b.c); // 2
+console.log(deepCopy.b.c); // 10
+```
+## 2. Using JSON.stringify() and JSON.parse():
+This method works for simple objects but does not handle functions, undefined, or circular references.
+```js
+const obj = { a: 1, b: { c: 2 } };
+const deepCopy = JSON.parse(JSON.stringify(obj));
+
+deepCopy.b.c = 10;
+console.log(obj.b.c); // 2
+console.log(deepCopy.b.c); // 10
+```
+> ❗️ Limitations: Loses non-serializable values like `undefined`, functions, and circular references.
+
+
+
+
+
+
+
+

@@ -46,3 +46,4 @@ var createCounter = function(init) {
 
 # important points to remember:
 - arr.map((val, index) => ...);
+- use Promies.all([p1, p2]).then([x, y] => logic); it runs the promises in parallel.
