@@ -1,17 +1,11 @@
-console.log('init');
+const button = document.getElementById('btn');
+const output = document.getElementById('output');
 
-let n = 100;
-
-const cb = (x) => console.log(x);
-
-setTimeout(()=>console.log('deez nuts'), 50);
-for(let i=0;i<n;i++) {
-    setTimeout(()=>cb(i), i);
+const callback1 = () => {
+    output.innerText = 'CLICK Registerd';
 }
 
+button.addEventListener('click', callback1);
+console.log('test');
 
-// setTimeout(cb(100), 10);
-// setTimeout(() => cb(100), 10);
-
-
-console.log('fin');
+setTimeout(()=>button.click(), 1000);

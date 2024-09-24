@@ -123,6 +123,20 @@ There are four composition tools for running asynchronous operations concurrentl
 ![alt text](image-4.png)
 - when the script is finished and the nothing more is to be executed the GEC is popped and the engine stops.
 - The call stack doesn't wait for anything, whatever is pushed on it gets executed and popped, which can make js to be non blocking in the case of long computations such as bogo sort or some asynchronous operation like http req. so to make js non blocking, additional computation is done outside the `V8` engine to handle long running or blocking tasks in js
+- below is the rough diag of what functionality a browser provides:
+![alt text](image-5.png)
+we can see that our code runs in the engine which is just one part of the browser, the browser also has many useful APIs which allow us to anything in our code, these are webAPIs, a few examples of them are: Timers, Geolocation, Bluetooth, localstorage, sessionstorage, comm. with remote server, URL, DOM, fetch, console, etc. 
+![alt text](image-7.png)
+See below the architecture of the JS runtime:
+![alt text](image-6.png)
+
+## A few points about WebAPIs:
+- these are not part of JS, they are provided by the browser or Node.
+- these are APIs, and they are available in the code for us to use due to the global object, the global object is the `window` object, in case of browsers, the window object gives a way to access all the webAPIs.
+- you can do window.setTimeout or setTimeout
+
+## how it works:
+- so when there is some asynchronous code, it is offloaded to the webAPIs and the callback associated to the async code is registered, then when the async code finishes and its time for the callback to be executed, the registered callback is pushed to the callback queue and the event loop picks it up in the next iteration and pushes it to the call stack.
 
 # points gathered
 - `setTimeout()` is not a guranteed time of execution its a minimum time to execution.
