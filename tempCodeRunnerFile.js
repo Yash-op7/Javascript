@@ -1,1 +1,3 @@
-()=>{console.log('pq')}
+  .catch((err) => {
+//     console.error(err, "\nDo that");
+//   })
