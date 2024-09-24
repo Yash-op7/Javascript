@@ -51,5 +51,67 @@ async function main() {
 - Note: If you don't have sophisticated error handling, you very likely don't need nested then handlers. Instead, use a flat chain and put the error handling logic at the end.
 
 ## Promise rejection events
-If a promise rejection event is not handled by any handler, it bubbles to the top of the call stack, and the host needs to surface it. On the web, whenever a promise is rejected, one of two events is sent to the global scope (generally, this is either the window or, if being used in a web worker, it's the Worker or other worker-based interface). The two events are:
+If a promise rejection event is not handled by any handler, it bubbles to the top of the call stack, and the host needs to surface it. On the web, whenever a promise is rejected, one of two events is sent to the global scope. The two events are:
+`unhandledrejection` - Sent when a promise is rejected but there is no rejection handler available.
+`rejectionhandled` - Sent when a handler is attached to a rejected promise that has already caused an unhandledrejection event.
+- How to handle unhandledrejection event in window object in the browser
+```js
+addEventListener("unhandledrejection", (event) => {});
+onunhandledrejection = (event) => {};  // event has two properties, reason and promise
+```
+Example:
+```js
+window.addEventListener("unhandledrejection", (event) => {
+  console.warn(`UNHANDLED PROMISE REJECTION: ${event.reason}`);
+});
+```
+- how to handle in node.js:
+In Node.js, handling promise rejection is slightly different. You capture unhandled rejections by adding a handler for the Node.js unhandledRejection event (notice the difference in capitalization of the name), like this:
 
+```js
+process.on("unhandledRejection", (reason, promise) => {
+  // Add code here to examine the "promise" and "reason" values
+});
+```
+Example:
+```js
+function doSomething() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        // Other things to do before completion of the promise
+        console.log("Did something");
+        // The fulfillment value of the promise
+        resolve("https://example.com/");
+      }, 200);
+    });
+  }
+  
+
+doSomething()
+  .then(() => {
+    throw new Error("Something failed");
+
+    console.log("Do this");
+  })
+//   .catch((err) => {
+//     console.error(err, "\nDo that");
+//   })
+  .then(() => {
+    console.log("Do this, no matter what happened before");
+  });
+
+
+  process.on("unhandledRejection", (reason, promise) => {
+    // Add code here to examine the "promise" and "reason" values
+    console.log(reason)
+    console.log(promise)
+  });
+```
+- For Node.js, to prevent the error from being logged to the console (the default action that would otherwise occur), adding that process.on() listener is all that's necessary.
+## Composition
+There are four composition tools for running asynchronous operations concurrently: `Promise.all()`, `Promise.allSettled()`, `Promise.any()`, and `Promise.race()`.
+
+
+
+# points gathered
+- `setTimeout()` is not a guranteed time of execution its a minimum time to execution.

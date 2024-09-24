@@ -1,32 +1,17 @@
-function doSomething() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        // Other things to do before completion of the promise
-        console.log("Did something");
-        // The fulfillment value of the promise
-        resolve("https://example.com/");
-      }, 200);
-    });
-  }
-  
+console.log('init');
 
-doSomething()
-  .then(() => {
-    throw new Error("Something failed");
+let n = 100;
 
-    console.log("Do this");
-  })
-//   .catch((err) => {
-//     console.error(err, "\nDo that");
-//   })
-  .then(() => {
-    console.log("Do this, no matter what happened before");
-  });
+const cb = (x) => console.log(x);
+
+setTimeout(()=>console.log('deez nuts'), 50);
+for(let i=0;i<n;i++) {
+    setTimeout(()=>cb(i), i);
+}
 
 
-  process.on("unhandledRejection", (reason, promise) => {
-    // Add code here to examine the "promise" and "reason" values
-    console.log(reason)
-    console.log(promise)
-  });
-  
+// setTimeout(cb(100), 10);
+// setTimeout(() => cb(100), 10);
+
+
+console.log('fin');
