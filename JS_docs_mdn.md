@@ -112,6 +112,17 @@ doSomething()
 There are four composition tools for running asynchronous operations concurrently: `Promise.all()`, `Promise.allSettled()`, `Promise.any()`, and `Promise.race()`.
 
 
+# Async JS & Event Loop:
+- js is a single threaded, non blocking, asynchronous lang.
+- it has one call stack and it can only do one thing at a time
+- this call stack along with the heap make up the js engine - `V8`
+## how is any js code run
+- at the beginning when the engine starts, the global exec context(GEC) is initialized and pushed to the call stack, something like `main()`
+- then the script is executed line by line, first we encounter a func declaration `function a(){...}` so the function is allocated memory and the function is stored
+- next we encounter the func invocation `a()`, for this an exec context is created for function a and is pushed on the call stack, executes it and pops it, and so on.
+![alt text](image-4.png)
+- when the script is finished and the nothing more is to be executed the GEC is popped and the engine stops.
+- The call stack doesn't wait for anything, whatever is pushed on it gets executed and popped, which can make js to be non blocking in the case of long computations such as bogo sort or some asynchronous operation like http req. so to make js non blocking, additional computation is done outside the `V8` engine to handle long running or blocking tasks in js
 
 # points gathered
 - `setTimeout()` is not a guranteed time of execution its a minimum time to execution.
