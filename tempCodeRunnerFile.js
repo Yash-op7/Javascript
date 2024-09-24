@@ -1,1 +1,1 @@
-name
+()=>{console.log('pq')}

@@ -1,10 +1,10 @@
-questions to revisit:
+# questions to revisit:
 1. [2704. To Be Or Not To Be](https://leetcode.com/problems/to-be-or-not-to-be/description/?envType=study-plan-v2&envId=30-days-of-javascript)
 2. https://leetcode.com/problems/counter-ii/description/?envType=study-plan-v2&envId=30-days-of-javascript
 3. https://leetcode.com/problems/function-composition/?envType=study-plan-v2&envId=30-days-of-javascript
 
 
-mistakes made:
+# mistakes made:
 ## ⭐️ 1. LogicError due to lack of presence of mind while using ternary: Easy to miss
 ```js
 var expect = function(val) {
@@ -20,7 +20,7 @@ var expect = function(val) {
 ```
 - this code fails because in the false condition of the ternary instead of throwing the error, it return the error object.
 - In JavaScript, to raise an error, you need to use the throw statement explicitly.
-2. SyntaxError:
+## 2. SyntaxError:
 ```js
 /**
  * @param {integer} init
@@ -47,3 +47,6 @@ var createCounter = function(init) {
 # important points to remember:
 - arr.map((val, index) => ...);
 - use Promies.all([p1, p2]).then([x, y] => logic); it runs the promises in parallel.
+- ❗️ when trying to cache using a map and an array or object of values, don't use the arr or obj as key since they are memory addresses and hence different arrays with same values will be considered different keys, instead use `JSON.stringify(arr/obj)` on the arrays and objects, basically,
+    - ⭐️ cache by value not by reference (or container variable name)
+    - ❗️ don't use `...` as Map's method only expect 1 or 2 arguements only, so using `...` will have unexpected outcomes and js won't throw an error which would make it difficult to debug.
