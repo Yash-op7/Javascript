@@ -166,3 +166,40 @@ function myFn() {
  myFn();
 ```
 output is: second first first.
+
+- typeof obj.func.bind(obj2) = function
+- obj.func.call(obj2) = calls the function for obj2 as this
+
+- 
+```js
+const obj = {
+    height:30
+}
+
+console.log(obj.__proto__ === Object.prototype)
+
+const obj2 = Object.create(obj);
+
+console.log(obj2);
+console.log(obj2.height);
+console.log(obj2.__proto__);
+// so even if you do `delete obj2.height` it won't change the output as the height prototype resides on the obj2's prototype not obj2
+
+output:
+true
+{}
+30
+{ height: 30 }
+```
+- and
+```js
+const obj = Object.create({height:30});
+console.log(obj.__proto__)      // {h:30}
+console.log(obj.__proto__ === Object.prototype) // false
+console.log(Object.prototype)       // null prototype {}
+
+const obj2 = {h:30};
+console.log(obj2.__proto__ === Object.prototype)        // true
+```
+
+# js interview questions - 2:
