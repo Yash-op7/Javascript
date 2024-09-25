@@ -138,5 +138,31 @@ See below the architecture of the JS runtime:
 ## how it works:
 - so when there is some asynchronous code, it is offloaded to the webAPIs and the callback associated to the async code is registered, then when the async code finishes and its time for the callback to be executed, the registered callback is pushed to the callback queue and the event loop picks it up in the next iteration and pushes it to the call stack.
 
+## callback queue and microtasks queue
+- some webAPI's callbacks are queued in the callback queue, while others are queued in an identical queue but with a higher precedence called the Microtasks queue
+- all the callbacks that come through promises will go in the microtasks queue, also there is a mutation observer which constantly checks for mutations in the DOM tree, if there is then it can execute some callback, so callbacks which come through promises and the mutation observer go in the microtasks queue.
+- there is a possiblity of starvation of callbacks in the callback queue or tasks queue if the microtasks keep on queueing.
+![alt text](image-8.png)
+
+
+
 # points gathered
 - `setTimeout()` is not a guranteed time of execution its a minimum time to execution.
+- polyfill of map:
+
+
+# js interview questions - 1:
+- before running the code js initializes a GEC global execution context, which has two phases Memory phases and code phase, it first goes through the script and registers all the variables in the memory phase as undefined, it does not read their value, if a variable's value is a function then it is assigned to the variable else it remains undefined, then in the code phase it runs the code and ignores function declarations, see this ex:
+```js
+myFn();
+
+var myFn = function () {console.log("first");};
+
+myFn();
+
+function myFn() {
+    console.log("second");
+}
+ myFn();
+```
+output is: second first first.
