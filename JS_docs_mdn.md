@@ -277,4 +277,50 @@ func("https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-stor
 console.log('after')
 ```
 
-- you cannot do: const data = func(), because this will make the data to have a promise. instead either do data = await func() or use .then()
+- you cannot do: const data = func(), because this will result in data having: `Promise`, instead either do data = await func() or use .then()
+
+- A promise can participate in more than one chain. For the following code, the fulfillment of promiseA will cause both handleFulfilled1 and handleFulfilled2 to be added to the job queue. Because handleFulfilled1 is registered first, it will be invoked first.
+
+```js
+const promiseA = new Promise(myExecutorFunc);
+const promiseB = promiseA.then(handleFulfilled1, handleRejected1);
+const promiseC = promiseA.then(handleFulfilled2, handleRejected2);
+```
+or
+```js
+let p = new Promise((res) => {
+    setTimeout(()=>res(Math.random()), 1000);
+});
+
+const a = p.then((x)=>console.log('resolved through a', x));
+const b = p.then((x)=>console.log('resolved through b', x));
+```
+
+- An action can be assigned to an already settled promise. In this case, the action is added immediately to the back of the job queue and will be performed when all existing jobs are completed. Therefore, an action for an already "settled" promise will occur only after the current synchronous code completes and at least one loop-tick has passed. This guarantees that promise actions are asynchronous.
+
+```js
+const promiseA = new Promise((resolve, reject) => {
+  resolve(777);
+});
+// At this point, "promiseA" is already settled.
+promiseA.then((val) => console.log("asynchronous logging has val:", val));
+console.log("immediate logging");
+```
+
+- A thenable implements the .then() method, which is called with two callbacks: one for when the promise is fulfilled, one for when it's rejected. Promises are thenables as well.
+
+## Promise concurrency
+The Promise class offers four static methods to facilitate async task concurrency:
+
+`Promise.all()`
+Fulfills when all of the promises fulfill; rejects when any of the promises rejects.
+
+`Promise.allSettled()`
+Fulfills when all promises settle.
+
+`Promise.any()`
+Fulfills when any of the promises fulfills; rejects when all of the promises reject.
+
+`jPromise.race()`
+Settles when any of the promises settles. In other words, fulfills when any of the promises fulfills; rejects when any of the promises rejects.
+

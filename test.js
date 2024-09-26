@@ -1,11 +1,11 @@
-let p = new Promise((resolveOuter) => {
-  resolveOuter(
-    new Promise((resolveInner) => {
-      let id = setTimeout(resolveInner, 1000); // After 1000ms (1 second), resolveInner will be called
-      console.log(`${id} is the timer's id`);
-    })
-  );
-});
-console.log(p);
-let id2 = setTimeout(() => console.log(p), 1100);
-console.log('TEST',id2)
+const promiseA = new Promise((resolve, reject) => {
+    resolve(777);
+  });
+  // At this point, "promiseA" is already settled.
+  promiseA.then((val) => console.log("asynchronous logging has val:", val));
+  console.log("immediate logging");
+  
+  // produces output in this order:
+  // immediate logging
+  // asynchronous logging has val: 777
+  
