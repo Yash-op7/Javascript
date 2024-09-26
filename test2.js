@@ -1,20 +1,11 @@
-let str = 'a<div>b<div>c<div>d<div>e<div>f<div>g';
+// main.js
+const { Worker } = require('worker_threads');
 
-let isInsideDiv = false;
+console.log('a');
+const worker = new Worker('./worker.js');
+console.log('b');
+worker.on('message', (result) => {
+    console.log('Result from worker:', result);
+});
+console.log('c');
 
-let correctedString = [], segments = str.split('div');
-
-for(let i=0;i<segments.length;i++) {
-    if(isInsideDiv) {
-        correctedString.push(segments[i]);
-        correctedString.push('/div');
-        isInsideDiv=false;
-    } else {
-        correctedString.push(segments[i]);
-        correctedString.push('div');
-        isInsideDiv=true;
-    }
-}
-correctedString.pop();
-let ans = correctedString.join('');
-console.log(ans);

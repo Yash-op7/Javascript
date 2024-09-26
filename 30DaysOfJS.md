@@ -55,6 +55,90 @@ var createCounter = function(init) {
 - ❗️ when trying to cache using a map and an array or object of values, don't use the arr or obj as key since they are memory addresses and hence different arrays with same values will be considered different keys, instead use `JSON.stringify(arr/obj)` on the arrays and objects, basically,
     - ⭐️ cache by value not by reference (or container variable name)
     - ❗️ don't use `...` as Map's method only expect 1 or 2 arguements only, so using `...` will have unexpected outcomes and js won't throw an error which would make it difficult to debug.
+- if we want to create a class with an object on which we can chain operations like this then:
+new Calculator(10).add(5).subtract(7).getResult() // 10 + 5 - 7 = 8
+```js
+class Calculator {
+    
+    /** 
+     * @param {number} value
+     */
+    constructor(value) {
+        this.result = value;
+    }
+    
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */
+    add(value){
+        this.result += value;
+        return this;
+    }
+    
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */
+    subtract(value){
+        this.result -= value;
+        return this;
+    }
+    
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */  
+    multiply(value) {
+        this.result *= value;
+        return this;
+    }
+    
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */
+    divide(value) {
+        if(value === 0) {
+            throw new Error('Division by zero is not allowed')
+        }
+        this.result /= value;
+        return this;
+    }
+    
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */
+    power(value) {
+        this.result = Math.pow(this.result, value);
+        return this;
+    }
+    
+    /** 
+     * @return {number}
+     */
+    getResult() {
+        return this.result;
+    }
+}
+```
 
-    # Dom
-    -k
+# Dom
+## to append elements to a tag:
+- element.append() - can take both string and elements
+- element.appendChild() - can only take elements
+
+## to create element;
+```js
+const body = document.body;
+body.append('hello world');
+
+// document.createElement(typeOfElement);
+const div = document.createElement(typeOfElement);
+
+div.innerText ='hello world';
+div.textContent ='hello world';
+
+body.append(div);
+```
