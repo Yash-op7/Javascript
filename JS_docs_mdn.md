@@ -321,6 +321,26 @@ Fulfills when all promises settle.
 `Promise.any()`
 Fulfills when any of the promises fulfills; rejects when all of the promises reject.
 
-`jPromise.race()`
+`Promise.race()`
 Settles when any of the promises settles. In other words, fulfills when any of the promises fulfills; rejects when any of the promises rejects.
+
+## Promise constructor
+### `new Promise(executor)`
+- `executor`
+A function to be executed by the constructor. It receives two functions as parameters: `resolveFunc` and `rejectFunc`. Any errors thrown in the executor will cause the promise to be rejected, and the return value will be neglected.
+- When called via new, the Promise constructor returns a promise object. The promise object will become resolved when either of the functions `resolveFunc` or `rejectFunc` are invoked.
+```js
+function executor(resolveFunc, rejectFunc) {
+  // Typically, some asynchronous operation that accepts a callback,
+  // like the `readFile` function above
+}
+```
+### ⭐ `resolveFunc` and `rejectFunc` are also functions, and you can give them whatever actual names you want. Their signatures are simple: <h2>they accept a single parameter of any type.</h2>
+
+## Note: The existence of pending promises does not prevent the program from exiting. If the event loop is empty, the program exits despite any pending promises (because those are necessarily forever-pending).
+
+## Promise class static methods:
+- `Promise.reject(reason)`: returns a Promise object that is rejected with a given reason.
+
+
 
