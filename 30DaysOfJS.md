@@ -6,6 +6,8 @@
 5. https://leetcode.com/problems/interval-cancellation/?envType=study-plan-v2&envId=30-days-of-javascript
 6. https://leetcode.com/problems/cache-with-time-limit/description/?envType=study-plan-v2&envId=30-days-of-javascript
 - https://leetcode.com/problems/group-by/description/?envType=study-plan-v2&envId=30-days-of-javascript
+- https://leetcode.com/problems/join-two-arrays-by-id/description/?envType=study-plan-v2&envId=30-days-of-javascript
+- https://leetcode.com/problems/compact-object/description/?envType=study-plan-v2&envId=30-days-of-javascript
 
 # mistakes made:
 ## ⭐️ 1. LogicError due to lack of presence of mind while using ternary: Easy to miss
@@ -53,3 +55,6 @@ var createCounter = function(init) {
 - ❗️ when trying to cache using a map and an array or object of values, don't use the arr or obj as key since they are memory addresses and hence different arrays with same values will be considered different keys, instead use `JSON.stringify(arr/obj)` on the arrays and objects, basically,
     - ⭐️ cache by value not by reference (or container variable name)
     - ❗️ don't use `...` as Map's method only expect 1 or 2 arguements only, so using `...` will have unexpected outcomes and js won't throw an error which would make it difficult to debug.
+
+    # Dom
+    -k

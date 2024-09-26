@@ -348,6 +348,10 @@ function executor(resolveFunc, rejectFunc) {
     - A Promise that is rejected with the given reason.
 
 
+# js interview questions:
+- with `var`, left hand side gets hoisted, rhs doesn't
+- var and function declarations get hoisted, let and const do not.
+
 
 
 

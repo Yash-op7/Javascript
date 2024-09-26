@@ -9,7 +9,8 @@ let todos = [
 
 // Get all todos
 app.get('/todos', (req, res) => {
-  res.json(todos);
+//   res.json(todos);
+res.send(JSON.stringify(todos))
 });
 
 // Get a single todo by id
