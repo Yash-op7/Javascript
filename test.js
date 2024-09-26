@@ -1,7 +1,11 @@
-const obj = Object.create({height:30});
-console.log(obj.__proto__)      // {h:30}
-console.log(obj.__proto__ === Object.prototype) // false
-console.log(Object.prototype)       // null prototype {}
-
-const obj2 = {h:30};
-console.log(obj2.__proto__ === Object.prototype)        // true
+let p = new Promise((resolveOuter) => {
+  resolveOuter(
+    new Promise((resolveInner) => {
+      let id = setTimeout(resolveInner, 1000); // After 1000ms (1 second), resolveInner will be called
+      console.log(`${id} is the timer's id`);
+    })
+  );
+});
+console.log(p);
+let id2 = setTimeout(() => console.log(p), 1100);
+console.log('TEST',id2)
