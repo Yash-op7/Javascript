@@ -341,6 +341,13 @@ function executor(resolveFunc, rejectFunc) {
 
 ## Promise class static methods:
 - `Promise.reject(reason)`: returns a Promise object that is rejected with a given reason.
+- Parameters
+    - `reason`: Reason why this Promise rejected.
+
+- Return value
+    - A Promise that is rejected with the given reason.
+
+
 
 
 

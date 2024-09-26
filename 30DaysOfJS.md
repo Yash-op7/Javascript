@@ -2,7 +2,10 @@
 1. [2704. To Be Or Not To Be](https://leetcode.com/problems/to-be-or-not-to-be/description/?envType=study-plan-v2&envId=30-days-of-javascript)
 2. https://leetcode.com/problems/counter-ii/description/?envType=study-plan-v2&envId=30-days-of-javascript
 3. https://leetcode.com/problems/function-composition/?envType=study-plan-v2&envId=30-days-of-javascript
-
+4. https://leetcode.com/problems/timeout-cancellation/description/?envType=study-plan-v2&envId=30-days-of-javascript
+5. https://leetcode.com/problems/interval-cancellation/?envType=study-plan-v2&envId=30-days-of-javascript
+6. https://leetcode.com/problems/cache-with-time-limit/description/?envType=study-plan-v2&envId=30-days-of-javascript
+- https://leetcode.com/problems/group-by/description/?envType=study-plan-v2&envId=30-days-of-javascript
 
 # mistakes made:
 ## ⭐️ 1. LogicError due to lack of presence of mind while using ternary: Easy to miss

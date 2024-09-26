@@ -1,1 +1,1 @@
- // TypeError: Chaining cycle detected for promise #<Promise>
+thenable1.then
