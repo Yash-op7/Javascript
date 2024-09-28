@@ -15,3 +15,5 @@ console.log(Number.isInteger(a))
 - In JavaScript, functions are first-class objects,. Functions themselves are not a distinct data type; rather, they are a special type of object.
 - `parseInt('str')` & `parseFloat('2.3')`
 
+# new ones
+- default sort on integers sorts them lexicographically instead of by value

@@ -407,7 +407,7 @@ console.log(evens);  // [2, 4]
 const sum = [1, 2, 3].reduce((acc, num) => acc + num, 0);
 console.log(sum);  // 6
 ```
-Also `reduceRight()`: The reduceRight() method processes the array from right to left, accumulating a result. Could be useful in finding the minimum value from right or from left or something like that `¯\_(ツ)_/¯`
+Also `reduceRight()`: The reduceRight() method processes the array from right to left, accumulating a result. Could be useful in finding the minimum value from right or from left or something like that `¯\_(ツ)_/¯` -> found a use case, function composition, f(g(x)) for an array of functions [f, g]
 
 
 > ### 5. `find(boolean_function)`: tests each value through a boolean function and returns the value, undefined otherwise
@@ -647,6 +647,11 @@ const obj = { name: "Alice" };
 obj.name = "Bob";  // Object is mutable, properties can be changed
 ```
 
+```js
+let s1 = 'hello';
+let s2= 'hello';  // String interning is an optimization technique where identical string literals are stored only once in memory. 
+console.log(s1 === s2)
+```
 # Data Structures:
 > ## `Set`:
 - collection of unique values
@@ -661,9 +666,8 @@ console.log(set.has(1));  // true
 - `add(value)`: Adds a value to the set.
 - `delete(value)`: Removes a value.
 - `has(value)`: Checks if a value exists.
--`size`: Returns the number of elements.
+- `size`: Returns the number of elements.
 - `clear()`: Removes all elements.
-- `.size`: get the number of elements
 
 > ## `Map`:
 - a collection of key-value pairs
@@ -1786,7 +1790,7 @@ deepCopy.b.c = 10;
 console.log(obj.b.c); // 2
 console.log(deepCopy.b.c); // 10
 ```
-> ❗️ Limitations: Loses non-serializable values like `undefined`, functions, and circular references.
+> ❗️ Limitations: Loses non-serializable values like undefined, functions, and circular references.
 
 
 

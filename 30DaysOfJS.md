@@ -139,6 +139,138 @@ const div = document.createElement(typeOfElement);
 
 div.innerText ='hello world';
 div.textContent ='hello world';
+div.innerHTML ='<strong>hello world</strong>';       // security concerns, but its the only way to edit the inner html, another way to achieve the same end goal is to break the process down:
+
+const strongTag = document.createElement('strong');
+strongTag.innerText='hello world';
+div.append(strong); // more secure, same result
+
 
 body.append(div);
+
+div.remove(); // removes div completely from the html, but preserves it in the js code here.
+
+// we can also do:
+div.removeChild(span1); // if span1 is a child element inside the div, but just use remove();
 ```
+## how to edit classes, attributes, styles
+```js
+// modifying attributes
+let attr_value = div.getAttribute('id')
+// if: <div id='heading'>ksf</div>
+// then attr_value is `heading`
+// or
+// div1.id or div1.title work as well to access attributes of div1 element
+
+similarly: div1.setAttribute('id', 'newId');
+or
+div1.id = 'newId';
+
+also
+
+div1.removeAttribute('id');
+
+div1.classList.add('new-class');
+div1.classList.remove('new-class');
+div1.classList.toggle('new-class'); // combination fo add and remove
+div1.classList.toggle('soem-class',  true/false);
+
+// directly modify style:
+div1.style.backgroundColor='red';       // convert the hyphen style to camelCase.
+```
+# js oops type coercion implicit methods:
+## 1. `valueOf()` : returns whtatever arithmetic representation of the obj should be used in arith. expressions
+## 2. `toString()`: returns whatever should String(obj) return.
+
+# js regex:
+Basic Syntax
+You can define a RegEx pattern in two ways:
+
+```js
+const regex = /pattern/;
+OR
+const regex = new RegExp('pattern');
+```
+Common RegEx Components
+/abc/: Matches the exact sequence "abc".
+.: Matches any single character (except newline).
+^: Anchors the match to the beginning of the string.
+$: Anchors the match to the end of the string.
+[abc]: Matches any one of the characters a, b, or c.
+\d: Matches any digit (equivalent to [0-9]).
+\w: Matches any word character (alphanumeric and underscore).
+\s: Matches any whitespace character.
++: Matches one or more occurrences of the preceding character or group.
+*: Matches zero or more occurrences.
+?: Makes the preceding character or group optional (matches zero or one occurrence).
+{n,m}: Matches between n and m occurrences of the preceding character or group.
+- Flags (Modifiers)
+Flags modify the behavior of the RegEx. They come after the closing slash or the second argument of RegExp:
+
+g: Global match (find all matches, not just the first).
+i: Case-insensitive match.
+m: Multi-line mode.
+
+## methods:
+1. myRegex.test(string): Tests if a pattern exists in a string and returns true or false.ex:
+```js
+const regex = /^hello$/i;
+const result = regex.test("Hello");
+```
+
+
+# 
+Regular Expressions (RegEx) in JavaScript
+Regular expressions (RegEx) are patterns used to match character combinations in strings. JavaScript provides a built-in RegExp object to work with RegEx, and it's widely used for tasks like searching, validating, extracting, and replacing text in strings.
+
+1. Creating a Regular Expression
+There are two ways to create a RegEx pattern in JavaScript:
+
+Literal syntax:
+
+js
+Copy code
+let regex = /pattern/flags;
+Constructor syntax:
+
+js
+Copy code
+let regex = new RegExp('pattern', 'flags');
+2. RegEx Flags
+Flags modify how the regular expression behaves. Here are the common flags:
+
+g - global: match all occurrences instead of stopping after the first match.
+i - ignore case: case-insensitive matching.
+m - multiline: allows ^ and $ to match the start and end of lines.
+s - dotall: allows . to match newline characters.
+u - unicode: enables full Unicode matching.
+y - sticky: matches only from the last index position in the target string.
+3. Basic Syntax
+Characters:
+Literal characters like /abc/ match exactly "abc" in a string.
+Special characters (like ., *, +, ?, etc.) have special meanings.
+To match a special character literally, you escape it with a backslash (\), e.g., /\./ matches a dot (.).
+4. Common Special Characters and Sequences
+Character	Meaning
+```
+.	Any single character except newline
+\d	Any digit (0-9)
+\D	Any non-digit
+\w	Any word character (alphanumeric + _)
+\W	Any non-word character
+\s	Any whitespace character (space, tab, etc.)
+\S	Any non-whitespace character
+\b	Word boundary
+\B	Non-word boundary
+^	Start of a string or line (in multiline mode)
+$	End of a string or line (in multiline mode)
+\	Escape character for special characters
+```
+
+
+methdos:
+- match
+- test
+- search -> index
+- replace
+- split
